@@ -109,7 +109,7 @@ img {
   position: absolute;
   inset: 0 0 auto;
   z-index: 90;
-  padding: 6px 0;
+  padding: 0;
   background: rgba(231, 245, 223, 0.96);
   box-shadow: 0 8px 30px rgb(36 89 158 / 10%);
 }
@@ -129,7 +129,7 @@ img {
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
-  min-height: 70px;
+  min-height: 66px;
 }
 
 .brand {
@@ -146,6 +146,7 @@ img {
 .brand img {
   width: 138px;
   height: auto;
+  margin: -16px 0;
 }
 
 .brand span {
@@ -1659,7 +1660,7 @@ html[dir="rtl"] .pill-list {
 @media (max-width: 1024px) {
   .site-header {
     position: fixed;
-    padding: 8px 0;
+    padding: 0;
     background: rgba(231, 245, 223, 0.98);
   }
 
@@ -1667,7 +1668,7 @@ html[dir="rtl"] .pill-list {
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-    min-height: 66px;
+    min-height: 58px;
   }
 
   .brand {
@@ -1678,6 +1679,7 @@ html[dir="rtl"] .pill-list {
 
   .brand img {
     width: 96px;
+    margin: -12px 0;
   }
 
   .brand span {
@@ -1757,6 +1759,10 @@ html[dir="rtl"] .pill-list {
     margin-left: 0;
   }
 
+  .desktop-booking-item {
+    display: none;
+  }
+
   .menu-items a {
     display: block;
     padding: 10px 0;
@@ -1834,7 +1840,7 @@ html[dir="rtl"] .pill-list {
   }
 
   .site-header {
-    padding: 6px 0;
+    padding: 0;
     box-shadow: 0 8px 24px rgb(36 89 158 / 10%);
   }
 
@@ -1842,7 +1848,7 @@ html[dir="rtl"] .pill-list {
     display: grid;
     grid-template-columns: 34px minmax(0, 1fr) 62px auto;
     gap: 7px;
-    min-height: 58px;
+    min-height: 52px;
   }
 
   .brand {
@@ -1852,6 +1858,7 @@ html[dir="rtl"] .pill-list {
 
   .brand img {
     width: 63px;
+    margin: -6px 0;
   }
 
   .brand span {
