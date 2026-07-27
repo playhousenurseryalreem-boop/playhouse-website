@@ -1587,7 +1587,7 @@ html[dir="rtl"] .pill-list {
   position: fixed;
   right: 22px;
   bottom: 20px;
-  z-index: 20;
+  z-index: 70;
   font-size: 13px;
 }
 
@@ -1608,7 +1608,7 @@ html[dir="rtl"] .pill-list {
 .chat-widget__panel {
   position: absolute;
   right: 0;
-  bottom: 72px;
+  bottom: 82px;
   display: none;
   gap: 10px;
   align-items: flex-start;
@@ -2288,7 +2288,7 @@ html[dir="rtl"] .pill-list {
 
   .chat-widget__panel {
     right: 0;
-    bottom: 68px;
+    bottom: 74px;
     width: min(330px, calc(100vw - 32px));
   }
 }
