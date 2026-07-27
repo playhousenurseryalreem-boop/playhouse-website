@@ -144,7 +144,7 @@ img {
 }
 
 .brand img {
-  width: 92px;
+  width: 138px;
   height: auto;
 }
 
@@ -1677,7 +1677,7 @@ html[dir="rtl"] .pill-list {
   }
 
   .brand img {
-    width: 64px;
+    width: 96px;
   }
 
   .brand span {
@@ -1851,7 +1851,7 @@ html[dir="rtl"] .pill-list {
   }
 
   .brand img {
-    width: 42px;
+    width: 63px;
   }
 
   .brand span {
