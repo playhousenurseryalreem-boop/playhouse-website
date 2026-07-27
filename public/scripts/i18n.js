@@ -71,6 +71,8 @@ const translations = {
     "Designed to inspire young minds, our premium learning environment features spacious outdoor play areas, sensory and discovery zones, role-play spaces, Arabic language learning, cultural exploration and creative arts.": "صممت بيئتنا التعليمية الراقية لإلهام عقول الأطفال، وتضم مساحات لعب خارجية واسعة ومناطق حسية واستكشافية ومساحات لعب تمثيلي وتعلم اللغة العربية واستكشافاً ثقافياً وفنوناً إبداعية.",
     "Our Branches": "فروعنا",
     "Playhouse Nursery proudly operates three branches across Abu Dhabi and Dubai.": "تدير حضانة بلاي هاوس ثلاثة فروع في أبوظبي ودبي.",
+    "A Day at Playhouse": "يوم في بلاي هاوس",
+    "Bright classrooms, caring teachers, outdoor play, creative discovery and real Playhouse moments from every part of the nursery journey.": "صفوف مشرقة ومعلمات عطوفات ولعب خارجي واكتشاف إبداعي ولحظات حقيقية من رحلة الحضانة في بلاي هاوس.",
     "What Parents Say": "ماذا يقول أولياء الأمور",
     "Real Google reviews from families who trust Playhouse Nursery.": "تقييمات حقيقية من جوجل لعائلات تثق بحضانة بلاي هاوس.",
     "Interested in Playhouse Nursery for your child? Choose your nearest branch and send us your details. Our team will contact you soon.": "هل ترغب في تسجيل طفلك في حضانة بلاي هاوس؟ اختر أقرب فرع وأرسل لنا بياناتك، وسيتواصل معك فريقنا قريباً.",

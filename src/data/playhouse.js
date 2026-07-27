@@ -51,6 +51,42 @@ export const galleryImages = [
   "/gallery/sensory-group-play.png",
   "/gallery/math-floor-play.png",
   "/gallery/playhouse-branch-exterior.png",
+  "/gallery/playhouse-reception.png",
+  "/gallery/table-activity.png",
+  "/gallery/storytime-circle.png",
+  "/gallery/painting-boy.png",
+  "/gallery/nature-play-table.png",
+  "/gallery/water-sensory-play.png",
+  "/gallery/outdoor-active-play.png",
+  "/gallery/math-blocks-play.png",
+  "/gallery/rainbow-art.png",
+  "/gallery/group-reading.png",
+  "/gallery/home-hero-blocks.png",
+  "/gallery/discovery-table.png",
+  "/gallery/music-movement.png"
+];
+
+export const learningMoments = [
+  "/gallery/home-hero-blocks.png",
+  "/gallery/table-activity.png",
+  "/gallery/storytime-circle.png",
+  "/gallery/painting-boy.png",
+  "/gallery/nature-play-table.png",
+  "/gallery/water-sensory-play.png",
+  "/gallery/outdoor-active-play.png",
+  "/gallery/math-blocks-play.png",
+  "/gallery/rainbow-art.png",
+  "/gallery/group-reading.png",
+  "/gallery/discovery-table.png",
+  "/gallery/music-movement.png",
+  "/gallery/student-leaf-art.png",
+  "/gallery/student-portrait-art.png",
+  "/gallery/student-glasses-art.png",
+  "/gallery/playground-girl.png",
+  "/gallery/swing-playground.png",
+  "/gallery/sensory-group-play.png",
+  "/gallery/math-floor-play.png",
+  "/gallery/playhouse-branch-exterior.png",
   "/gallery/playhouse-reception.png"
 ];
 

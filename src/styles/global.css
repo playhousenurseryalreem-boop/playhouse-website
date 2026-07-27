@@ -894,14 +894,14 @@ html[dir="rtl"] .pill-list {
   padding: 110px 0 80px;
   color: #ffffff;
   text-align: center;
-  background: linear-gradient(rgb(0 0 0 / 44%), rgb(0 0 0 / 36%)), url("/gallery/sensory-group-play.png") center/cover no-repeat;
+  background: linear-gradient(rgb(0 0 0 / 44%), rgb(0 0 0 / 36%)), url("/gallery/storytime-circle.png") center/cover no-repeat;
 }
 
 .home-hero {
   min-height: 690px;
   padding: 112px 0 70px;
   color: #ffffff;
-  background: linear-gradient(90deg, rgb(0 0 0 / 48%), rgb(0 0 0 / 10%)), url("/images/playhouse/classroom-craft.jpeg") center/cover no-repeat;
+  background: linear-gradient(90deg, rgb(0 0 0 / 48%), rgb(0 0 0 / 10%)), url("/gallery/home-hero-blocks.png") center/cover no-repeat;
 }
 
 .hero-home-grid {
@@ -1033,7 +1033,7 @@ html[dir="rtl"] .pill-list {
 }
 
 .env-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/student-glasses-art.png");
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/water-sensory-play.png");
 }
 
 .location-hero,
@@ -1046,7 +1046,7 @@ html[dir="rtl"] .pill-list {
 }
 
 .camp-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 22%), rgb(0 0 0 / 22%)), url("/gallery/playground-girl.png");
+  background-image: linear-gradient(rgb(0 0 0 / 22%), rgb(0 0 0 / 22%)), url("/gallery/music-movement.png");
 }
 
 .thanks-hero {
@@ -1142,14 +1142,65 @@ html[dir="rtl"] .pill-list {
   color: var(--muted);
 }
 
+.moments-section {
+  padding: 82px 0;
+  background: #ffffff;
+}
+
+.moments-section h2 {
+  margin: 0 0 10px;
+  color: var(--primary);
+  font-family: var(--secondary-font-name);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.moments-section p {
+  margin: 0 auto 34px;
+  color: var(--muted);
+}
+
+.moments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.moment-card {
+  min-height: 220px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--soft-green);
+  box-shadow: 0 16px 42px rgb(36 89 158 / 10%);
+}
+
+.moment-card--wide {
+  grid-column: span 2;
+}
+
+.moment-card img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.moment-card--wide img {
+  aspect-ratio: 16 / 9;
+}
+
 .review-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+  width: min(100% - 56px, 1280px);
 }
 
 .review-card {
-  overflow: hidden;
+  overflow: visible;
+  padding: 10px;
   background: #ffffff;
   border: 1px solid rgb(36 89 158 / 10%);
   border-radius: 8px;
@@ -1158,8 +1209,9 @@ html[dir="rtl"] .pill-list {
 
 .review-card img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 .feature-grid,
@@ -1391,7 +1443,7 @@ html[dir="rtl"] .pill-list {
 }
 
 .playhouse-hero {
-  background-image: linear-gradient(90deg, rgb(0 0 0 / 40%), rgb(0 0 0 / 8%)), url("/images/playhouse/classroom-craft.jpeg");
+  background-image: linear-gradient(90deg, rgb(0 0 0 / 42%), rgb(0 0 0 / 10%)), url("/gallery/home-hero-blocks.png");
 }
 
 .pill-list {
@@ -1993,6 +2045,7 @@ html[dir="rtl"] .pill-list {
   .split-section,
   .text-block,
   .feature-band,
+  .moments-section,
   .google-reviews-section,
   .location-grid-section,
   .request-section,
@@ -2051,14 +2104,32 @@ html[dir="rtl"] .pill-list {
   .location-grid,
   .whatsapp-grid,
   .team-grid,
+  .moments-grid,
   .review-grid {
     gap: 18px;
   }
 
-  .review-grid {
+  .moments-grid {
     grid-template-columns: 1fr;
   }
 
+  .moment-card,
+  .moment-card--wide {
+    grid-column: auto;
+    min-height: 0;
+  }
+
+  .moment-card img,
+  .moment-card--wide img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+    width: min(100% - 32px, 480px);
+  }
+
+  .moments-section h2,
   .google-reviews-section h2 {
     font-size: 34px;
   }
