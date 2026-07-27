@@ -25,11 +25,10 @@ const navItems = [
       <div class="mobile-actions" aria-label="Mobile header actions">
         <label class="language-switch mobile-language" aria-label="Select language">
           <select data-language-select>
-            <option value="en">English</option>
+            <option value="en">Eng</option>
             <option value="ar">العربية</option>
           </select>
         </label>
-        <a href="#book-visit-modal" class="mobile-tour" data-open-booking>Book a Visit</a>
       </div>
       <ul class="menu-items">
         {navItems.map(([label, href]) => <li><a href={href}>{label}</a></li>)}

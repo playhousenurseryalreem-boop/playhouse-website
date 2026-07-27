@@ -55,8 +55,8 @@ body {
 }
 
 .site-preloader img {
-  width: 180px;
-  height: 180px;
+  width: 360px;
+  height: 360px;
   object-fit: contain;
   filter: none;
 }
@@ -145,9 +145,9 @@ img {
 }
 
 .brand img {
-  width: 138px;
+  width: 166px;
   height: auto;
-  margin: -16px 0;
+  margin: -22px 0;
 }
 
 .brand span {
@@ -1638,8 +1638,8 @@ html[dir="rtl"] .pill-list {
   }
 
   .brand img {
-    width: 96px;
-    margin: -12px 0;
+    width: 115px;
+    margin: -16px 0;
   }
 
   .brand span {
@@ -1807,7 +1807,7 @@ html[dir="rtl"] .pill-list {
 
   .primary-menu {
     display: grid;
-    grid-template-columns: 34px minmax(0, 1fr) 72px;
+    grid-template-columns: 34px minmax(0, 1fr) 58px;
     gap: 8px;
     min-height: 58px;
   }
@@ -1818,12 +1818,12 @@ html[dir="rtl"] .pill-list {
   }
 
   .brand img {
-    width: 112px;
-    margin: -18px 0;
+    width: 134px;
+    margin: -24px 0;
   }
 
   .brand span {
-    max-width: 92px;
+    max-width: 118px;
     overflow: visible;
     font-size: clamp(15px, 4vw, 18px);
     line-height: 0.95;
@@ -1832,13 +1832,13 @@ html[dir="rtl"] .pill-list {
   }
 
   .mobile-actions {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4px;
+    display: inline-flex;
+    justify-content: flex-end;
     margin-left: 0;
   }
 
   .mobile-tour {
+    display: none;
     align-items: center;
     justify-content: center;
     min-height: 27px;
@@ -1852,7 +1852,7 @@ html[dir="rtl"] .pill-list {
   }
 
   .mobile-language select {
-    width: 72px;
+    width: 58px;
     min-height: 27px;
     padding: 0 4px;
     font-size: 9px;
