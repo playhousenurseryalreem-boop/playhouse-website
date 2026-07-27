@@ -8,7 +8,7 @@ export const branches = [
     email: "Mainbranch@playhousenursery.ae",
     whatsapp: "https://wa.me/971542632235?text=Hi%20Playhouse%20Khalidiya!",
     instagram: "https://www.instagram.com/playhousenursery.khalidiyah/",
-    image: "/gallery/Preschool Children Playing.webp",
+    image: "/gallery/sensory-group-play.png",
     description: "Our main Abu Dhabi branch offers a warm, secure and inspiring early years environment in the heart of Khalidiya."
   },
   {
@@ -20,7 +20,7 @@ export const branches = [
     email: "Branch1@playhousenursery.ae",
     whatsapp: "https://wa.me/971505624547?text=Hi%20Playhouse%20Al%20Reem!",
     instagram: "https://www.instagram.com/playhousenursery.alreem?utm_source=qr",
-    image: "/gallery/learning_through_play_602ef0c40c.png",
+    image: "/gallery/math-floor-play.png",
     description: "Located on vibrant Al Reem Island, this branch serves island families with premium early education at their doorstep."
   },
   {
@@ -32,7 +32,7 @@ export const branches = [
     email: "Dubaibranch@playhousenursery.ae",
     whatsapp: "https://wa.me/971529821105?text=Hi%20Playhouse%20Mirdif!",
     instagram: "https://www.instagram.com/playhousenursery_mirdif_dubai/",
-    image: "/gallery/play-school.webp",
+    image: "/gallery/swing-playground.png",
     description: "Our Dubai branch is designed for families in a vibrant, family-friendly community and welcomes children up to 5 years."
   }
 ];
@@ -43,22 +43,22 @@ export const generalEmails = [
 ];
 
 export const galleryImages = [
-  "/gallery/57d3d6_e8f201dbfa844a7a866f7a5dc4d8fcc1~mv2.jpg",
-  "/gallery/Best-Nursery-School-in-Chembur-Near-Govandi.png",
-  "/gallery/Nursery-School-Admission-in-Gurgaon.jpg",
-  "/gallery/Preschool Children Playing.webp",
-  "/gallery/blog-gallery-1767079345-0.jpeg",
-  "/gallery/child-s-dream-nursery-dabholi-surat-playgroups-93xvrlmwu2.webp",
-  "/gallery/divine-child-play-group-and-nursery-ghatkopar-west-mumbai-nursery-schools-azeyavsr2p.webp",
-  "/gallery/images.jpeg",
-  "/gallery/learning_through_play_602ef0c40c.png",
-  "/gallery/mothers-nursery-school-limbugaon-darjeeling-schools-nw25p7fg88.avif",
-  "/gallery/nursery-class-india.jpg",
-  "/gallery/play-school.webp",
-  "/gallery/premium_photo-1663106419176-ab3e42499a5c.avif",
-  "/gallery/preschool-in-Indore_11zon.jpg",
-  "/gallery/role-of-nursery-school-education.jpg",
-  "/gallery/wcp-2403191506-0783927030.jpg"
+  "/gallery/student-leaf-art.png",
+  "/gallery/student-portrait-art.png",
+  "/gallery/student-glasses-art.png",
+  "/gallery/playground-girl.png",
+  "/gallery/swing-playground.png",
+  "/gallery/sensory-group-play.png",
+  "/gallery/math-floor-play.png",
+  "/gallery/playhouse-branch-exterior.png",
+  "/gallery/playhouse-reception.png"
+];
+
+export const googleReviews = [
+  "/gallery/google-review-wala-khader.png",
+  "/gallery/google-review-merliza-ghennam.png",
+  "/gallery/google-review-amit-pandey.png",
+  "/gallery/google-review-leena-awada.png"
 ];
 
 export const team = [

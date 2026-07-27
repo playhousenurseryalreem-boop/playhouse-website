@@ -27,6 +27,7 @@ body {
   font-family: var(--main-font-name);
   font-size: 16px;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .site-preloader {
@@ -826,7 +827,7 @@ img {
   padding: 110px 0 80px;
   color: #ffffff;
   text-align: center;
-  background: linear-gradient(rgb(0 0 0 / 44%), rgb(0 0 0 / 36%)), url("/gallery/learning_through_play_602ef0c40c.png") center/cover no-repeat;
+  background: linear-gradient(rgb(0 0 0 / 44%), rgb(0 0 0 / 36%)), url("/gallery/sensory-group-play.png") center/cover no-repeat;
 }
 
 .home-hero {
@@ -957,28 +958,28 @@ img {
 }
 
 .about-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/divine-child-play-group-and-nursery-ghatkopar-west-mumbai-nursery-schools-azeyavsr2p.webp");
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/playhouse-branch-exterior.png");
 }
 
 .age-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/nursery-class-india.jpg");
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/student-leaf-art.png");
 }
 
 .env-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/Best-Nursery-School-in-Chembur-Near-Govandi.png");
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/student-glasses-art.png");
 }
 
 .location-hero,
 .contact-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/57d3d6_e8f201dbfa844a7a866f7a5dc4d8fcc1~mv2.jpg");
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/swing-playground.png");
 }
 
 .parent-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/preschool-in-Indore_11zon.jpg");
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/student-portrait-art.png");
 }
 
 .camp-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 22%), rgb(0 0 0 / 22%)), url("/gallery/learning_through_play_602ef0c40c.png");
+  background-image: linear-gradient(rgb(0 0 0 / 22%), rgb(0 0 0 / 22%)), url("/gallery/playground-girl.png");
 }
 
 .thanks-hero {
@@ -1053,6 +1054,45 @@ img {
 
 .feature-band {
   background: var(--soft-blue);
+}
+
+.google-reviews-section {
+  padding: 74px 0;
+  background: linear-gradient(180deg, #ffffff, var(--soft-green));
+}
+
+.google-reviews-section h2 {
+  margin: 0 0 10px;
+  color: var(--primary);
+  font-family: var(--secondary-font-name);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.google-reviews-section p {
+  margin: 0 auto 30px;
+  color: var(--muted);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.review-card {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgb(36 89 158 / 10%);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgb(36 89 158 / 10%);
+}
+
+.review-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .feature-grid,
@@ -1654,29 +1694,68 @@ img {
 
 @media (max-width: 767px) {
   .container {
-    width: min(100% - 28px, 1180px);
+    width: min(100% - 24px, 1180px);
+  }
+
+  .site-header {
+    padding: 6px 0;
+    box-shadow: 0 8px 24px rgb(36 89 158 / 10%);
   }
 
   .primary-menu {
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    gap: 8px;
+    min-height: 58px;
   }
 
   .brand {
     gap: 8px;
+    min-width: 0;
   }
 
   .brand img {
-    width: 50px;
+    width: 42px;
   }
 
   .brand span {
-    font-size: clamp(14px, 4vw, 18px);
+    overflow: hidden;
+    font-size: clamp(14px, 4.2vw, 17px);
     line-height: 1;
+    text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .mobile-tour {
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 9px;
+    border: 1px solid rgb(36 89 158 / 30%);
+    color: var(--primary);
+    background: rgb(255 255 255 / 34%);
     font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    width: 38px;
+    padding: 0;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+  }
+
+  .menu-items {
+    top: 70px;
+    padding: 8px 18px 14px;
+  }
+
+  .menu-items a {
+    padding: 12px 0;
+    font-size: 15px;
   }
 
   .booking-modal {
@@ -1698,23 +1777,41 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .home-hero {
+    padding: 92px 0 38px;
+    background-position: 44% center;
+  }
+
+  .hero-home-grid {
+    gap: 22px;
+    padding-top: 10px;
+  }
+
   .home-hero h1 {
-    font-size: 36px;
-    line-height: 1.02;
+    max-width: 350px;
+    font-size: clamp(32px, 9.6vw, 38px);
+    line-height: 1.04;
+    text-shadow: 0 3px 18px rgb(0 0 0 / 38%);
   }
 
   .home-hero p {
-    margin-top: 16px;
-    font-size: 15px;
+    max-width: 360px;
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-shadow: 0 2px 14px rgb(0 0 0 / 42%);
   }
 
-  .hero-booking-card {
-    width: min(100% - 34px, 400px);
-    padding: 14px;
+  .hero-booking-card,
+  .request-card {
+    width: min(100%, 380px);
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 18px 46px rgb(0 0 0 / 22%);
   }
 
   .hero-booking-card h2 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .hero-booking-card p {
@@ -1738,19 +1835,15 @@ img {
     font-size: 14px;
   }
 
-  .request-card {
-    width: min(100% - 34px, 390px);
-    padding: 20px;
-  }
-
   .media-frame {
     max-width: 100%;
     margin: 0;
+    border-radius: 14px;
   }
 
   .hero {
     min-height: auto;
-    background-image: linear-gradient(rgb(0 0 0 / 35%), rgb(0 0 0 / 30%)), url("/gallery/premium_photo-1663106419176-ab3e42499a5c.avif");
+    background-image: linear-gradient(rgb(0 0 0 / 35%), rgb(0 0 0 / 30%)), url("/gallery/student-glasses-art.png");
   }
 
   .hero-grid {
@@ -1788,28 +1881,195 @@ img {
   }
 
   .page-hero h1 {
-    font-size: 42px;
+    font-size: clamp(36px, 10vw, 44px);
+    line-height: 1.02;
+    text-shadow: 0 3px 18px rgb(0 0 0 / 38%);
   }
 
   .page-hero p {
-    font-size: 17px;
+    max-width: 340px;
+    font-size: 16px;
+    line-height: 1.5;
+    text-shadow: 0 2px 12px rgb(0 0 0 / 36%);
+  }
+
+  .page-hero {
+    min-height: 348px;
+    padding: 104px 0 54px;
+    background-position: center;
   }
 
   .split-section,
   .text-block,
   .feature-band,
+  .google-reviews-section,
   .location-grid-section,
   .request-section,
   .branch-whatsapp-section,
   .team-section,
   .branch-detail-section {
-    padding: 52px 0;
+    padding: 46px 0;
+  }
+
+  .split-grid {
+    gap: 24px;
   }
 
   .split-grid h2,
   .text-block h2,
   .request-head h2 {
     font-size: 34px;
+    line-height: 1.08;
+  }
+
+  .split-grid h3,
+  .text-block h3 {
+    font-size: 25px;
+    line-height: 1.12;
+  }
+
+  .split-grid p,
+  .text-block p,
+  .card-grid article p,
+  .location-card p,
+  .whatsapp-card p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .split-grid img,
+  .feature-grid img,
+  .card-grid article > img,
+  .location-card img {
+    border-radius: 14px;
+  }
+
+  .feature-grid article,
+  .card-grid article,
+  .location-card,
+  .whatsapp-card,
+  .branch-contact-card,
+  .team-card {
+    overflow: hidden;
+    border-color: rgb(36 89 158 / 10%);
+    border-radius: 14px;
+    box-shadow: 0 14px 34px rgb(36 89 158 / 9%);
+  }
+
+  .card-grid,
+  .location-grid,
+  .whatsapp-grid,
+  .team-grid,
+  .review-grid {
+    gap: 18px;
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .google-reviews-section h2 {
+    font-size: 34px;
+  }
+
+  .review-card {
+    border-radius: 14px;
+  }
+
+  .feature-grid article h3,
+  .card-grid article h3,
+  .location-card h2,
+  .whatsapp-card h2,
+  .team-card h2 {
+    font-size: 28px;
+    line-height: 1.08;
+  }
+
+  .feature-grid article h3,
+  .feature-grid article h4,
+  .feature-grid article p,
+  .card-grid article h3,
+  .card-grid article p,
+  .location-card h2,
+  .location-card p,
+  .location-card a {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .card-grid article > img,
+  .location-card img {
+    aspect-ratio: 16 / 11;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .whatsapp-card,
+  .team-card,
+  .branch-contact-card {
+    padding: 24px;
+  }
+
+  .general-contact {
+    margin-bottom: 24px;
+  }
+
+  .general-contact a {
+    display: flex;
+    width: fit-content;
+    max-width: 100%;
+    margin: 9px auto 0;
+    overflow-wrap: anywhere;
+    font-size: 15px;
+  }
+
+  .button-link,
+  .whatsapp-card .button-link {
+    min-height: 44px;
+    padding: 0 20px;
+  }
+
+  .pill-list {
+    justify-content: flex-start;
+    gap: 9px;
+  }
+
+  .pill-list li {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .site-footer {
+    padding: 46px 0 34px;
+  }
+
+  .site-footer ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .footer-socials {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 340px;
+  }
+
+  .footer-socials a {
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .footer-logos {
+    margin: 28px 0 22px;
+  }
+
+  .footer-logos img {
+    width: 150px;
+    height: auto;
   }
 
   .intro-section h3,
