@@ -243,6 +243,7 @@ img {
 .announcement-track {
   display: flex;
   width: max-content;
+  direction: ltr;
   animation: announcementScroll 24s linear infinite;
 }
 
@@ -255,6 +256,10 @@ img {
   letter-spacing: 0;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+html[dir="rtl"] .announcement-track span {
+  direction: rtl;
 }
 
 @keyframes announcementScroll {

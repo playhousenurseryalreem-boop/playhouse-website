@@ -254,6 +254,15 @@ const translateElementAttributes = (element, dictionary, language) => {
   });
 };
 
+const translateKeyedElements = (dictionary, language) => {
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const original = element.dataset.i18n;
+    if (!original) return;
+
+    element.textContent = language === "ar" ? translateValue(original, dictionary) : original;
+  });
+};
+
 const applyLanguage = (language) => {
   const dictionary = translations[language] || {};
   const isArabic = language === "ar";
@@ -277,6 +286,8 @@ const applyLanguage = (language) => {
   document.querySelectorAll("[placeholder], [aria-label], [title]").forEach((element) => {
     translateElementAttributes(element, dictionary, language);
   });
+
+  translateKeyedElements(dictionary, language);
 
   document.querySelectorAll("[data-language-select]").forEach((select) => {
     select.value = language;
