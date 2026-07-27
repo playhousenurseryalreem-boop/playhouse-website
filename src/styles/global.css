@@ -244,7 +244,7 @@ img {
   display: flex;
   width: max-content;
   direction: ltr;
-  animation: announcementScroll 24s linear infinite;
+  animation: announcementScroll 34s linear infinite;
 }
 
 .announcement-track--ar {
