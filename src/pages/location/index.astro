@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+import TourForm from "../../components/TourForm.astro";
+import { branches, facilities } from "../../data/playhouse.js";
+---
+
+<BaseLayout title="Playhouse Nursery Branches | Khalidiya, Al Reem & Mirdif" description="Find Playhouse Nursery branches in Khalidiya, Al Reem Island and Mirdif.">
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero location-hero">
+      <div class="container narrow">
+        <h1>Our Branches</h1>
+        <p>Quality early years education is just around the corner across Abu Dhabi and Dubai.</p>
+      </div>
+    </section>
+    <section class="location-grid-section">
+      <div class="container location-grid">
+        {branches.map((branch) => (
+          <article class="location-card">
+            <img src={branch.image} alt={branch.name} />
+            <h2>{branch.name}</h2>
+            <p>{branch.description}</p>
+            <p>{branch.address}</p>
+            <p>{branch.phone}</p>
+            <a href={branch.whatsapp}>Chat on WhatsApp</a>
+            <a class="icon-link email-link" href={`mailto:${branch.email}`}>{branch.email}</a>
+            <a class="icon-link instagram-link" href={branch.instagram} target="_blank" rel="noopener">Visit Instagram</a>
+            <a href={`/branches/${branch.slug}/`}>View Branch Page</a>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="text-block">
+      <div class="container narrow">
+        <h2>Branch Facilities</h2>
+        <ul class="pill-list">{facilities.map((facility) => <li>{facility}</li>)}</ul>
+      </div>
+    </section>
+    <TourForm />
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

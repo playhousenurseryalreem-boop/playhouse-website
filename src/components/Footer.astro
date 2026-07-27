@@ -1,0 +1,35 @@
+---
+import { branches } from "../data/playhouse.js";
+
+const footerLinks = [
+  ["About", "/about/"],
+  ["Branches", "/location/"],
+  ["Contact Us", "/contact-us/"],
+  ["Curriculum", "/age-groups/"],
+  ["Services", "/services/"],
+  ["Admissions", "/admissions/"],
+  ["Book a Visit", "/book-a-visit/"]
+];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="Footer navigation">
+      <ul>
+        {footerLinks.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="footer-socials" aria-label="Branch Instagram links">
+      {branches.map((branch) => (
+        <a class="icon-link instagram-link" href={branch.instagram} target="_blank" rel="noopener">
+          <span>{branch.label}</span>
+          <strong>Visit Instagram</strong>
+        </a>
+      ))}
+    </div>
+    <div class="footer-logos">
+      <a href="/"><img src="/logo.png" width="180" height="134" alt="Playhouse Nursery logo" /></a>
+    </div>
+    <p>©2026 Playhouse Nursery. All Rights Reserved</p>
+  </div>
+</footer>

@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ChatWidget from "../components/ChatWidget.astro";
+import TourForm from "../components/TourForm.astro";
+import { branches, facilities } from "../data/playhouse.js";
+---
+
+<BaseLayout title="Playhouse Nursery | Early Years Center in Abu Dhabi & Dubai" description="Playhouse Nursery offers British EYFS early childhood education across Khalidiya, Al Reem and Mirdif branches.">
+  <Header />
+  <main class="inner-page home-page">
+    <section class="home-hero playhouse-hero">
+      <div class="container hero-home-grid">
+        <div class="hero-home-copy">
+          <h1>Setting the Gold Standard in Early Childhood Education</h1>
+          <p>Established in 2016, Playhouse Nursery provides a safe, nurturing and inspiring environment where every child can thrive through curiosity, creativity, confidence and a lifelong love of learning.</p>
+        </div>
+        <aside class="hero-booking-card" aria-label="Book a visit on WhatsApp">
+          <span class="form-kicker">WhatsApp Booking</span>
+          <h2>Book a Visit</h2>
+          <p>Choose a branch and we will receive your details directly on WhatsApp.</p>
+          <form class="hero-booking-form">
+            <label>
+              <span>Parent name</span>
+              <input required name="FirstName" placeholder="Your full name" />
+            </label>
+            <label>
+              <span>Child age</span>
+              <select required name="your-age" aria-label="Child age">
+                <option value="">Select age</option>
+                <option value="45 days - 1 year">45 days - 1 year</option>
+                <option value="1 - 2 years">1 - 2 years</option>
+                <option value="2 - 3 years">2 - 3 years</option>
+                <option value="3 - 4 years">3 - 4 years</option>
+                <option value="4 - 5 years">4 - 5 years</option>
+              </select>
+            </label>
+            <label>
+              <span>Mobile number</span>
+              <input required type="tel" name="Phone" placeholder="+971 number" />
+            </label>
+            <label>
+              <span>Email address</span>
+              <input required type="email" name="your-email" placeholder="Email" />
+            </label>
+            <label class="full-field">
+              <span>Nearest branch</span>
+              <select required name="your-location" aria-label="Select nearest branch">
+                <option value="">Select branch</option>
+                <option value="Khalidiya Branch">Khalidiya Branch</option>
+                <option value="Al Reem Branch">Al Reem Branch</option>
+                <option value="Mirdif Branch">Mirdif Branch</option>
+              </select>
+            </label>
+            <button type="submit">Send on WhatsApp</button>
+          </form>
+        </aside>
+      </div>
+    </section>
+    <section class="split-section">
+      <div class="container split-grid">
+        <div>
+          <h2>Welcome to Playhouse Nursery</h2>
+          <h3>Where fun & learning never ends!</h3>
+          <p>We proudly welcome children from 45 days to 5 years in our Dubai branch and 45 days to 4 years in our Abu Dhabi branches, providing a nurturing environment where every stage of development is supported with care and excellence.</p>
+          <p>Our Dubai branch is fully approved by KHDA, while our Abu Dhabi branches are fully approved by ADEK. All branches are licensed and certified, reflecting our commitment to quality, safety and high educational standards.</p>
+        </div>
+        <div class="media-frame">
+          <video autoplay muted loop playsinline controls preload="metadata" poster="/gallery/Best-Nursery-School-in-Chembur-Near-Govandi.png" aria-label="Playhouse Nursery classroom video">
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+    <section class="feature-band">
+      <div class="container narrow">
+        <h2>Why Choose Playhouse Nursery?</h2>
+        <p>We do not just care for children - we inspire confidence, nurture curiosity and build strong foundations for a lifetime of learning and success.</p>
+      </div>
+      <div class="container card-grid">
+        <article><h3>Purpose-Built Learning</h3><p>Designed to inspire curiosity, creativity, discovery and independence.</p></article>
+        <article><h3>Caring Educators</h3><p>Qualified, passionate educators committed to every child’s development.</p></article>
+        <article><h3>Safe & Secure Campus</h3><p>Child-centred environments with secure entry and CCTV-monitored premises.</p></article>
+        <article><h3>EYFS Curriculum</h3><p>A balanced British early years curriculum with play-based and structured learning.</p></article>
+        <article><h3>Parent Partnership</h3><p>Strong communication with families to support every child’s success.</p></article>
+        <article><h3>Healthy Development</h3><p>Outdoor play, sensory zones, creative arts, Arabic learning and healthy routines.</p></article>
+      </div>
+    </section>
+    <section class="split-section reverse">
+      <div class="container split-grid">
+        <img src="/gallery/premium_photo-1663106419176-ab3e42499a5c.avif" alt="Child painting at Playhouse Nursery" />
+        <div>
+          <h2>Explore Our Curriculum</h2>
+          <h3>A Foundation Built for Excellence</h3>
+          <p>At Playhouse Nursery, we follow the British Early Years Foundation Stage (EYFS) Curriculum, providing a rich and engaging learning journey designed to support every child.</p>
+          <a class="button-link" href="/age-groups/">View Curriculum</a>
+        </div>
+      </div>
+    </section>
+    <section class="text-block">
+      <div class="container narrow">
+        <h2>Our Facilities</h2>
+        <p>Designed to inspire young minds, our premium learning environment features spacious outdoor play areas, sensory and discovery zones, role-play spaces, Arabic language learning, cultural exploration and creative arts.</p>
+        <ul class="pill-list">{facilities.map((facility) => <li>{facility}</li>)}</ul>
+      </div>
+    </section>
+    <section class="location-grid-section">
+      <div class="container narrow">
+        <h2>Our Branches</h2>
+        <p>Playhouse Nursery proudly operates three branches across Abu Dhabi and Dubai.</p>
+      </div>
+      <div class="container location-grid">
+        {branches.map((branch) => (
+          <article class="location-card">
+            <img src={branch.image} alt={branch.name} />
+            <h2>{branch.name}</h2>
+            <p>{branch.address}</p>
+            <p>{branch.phone}</p>
+            <a class="icon-link email-link" href={`mailto:${branch.email}`}>{branch.email}</a>
+            <a class="icon-link instagram-link" href={branch.instagram} target="_blank" rel="noopener">Visit Instagram</a>
+            <a href={`/branches/${branch.slug}/`}>View Branch</a>
+          </article>
+        ))}
+      </div>
+    </section>
+    <TourForm />
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

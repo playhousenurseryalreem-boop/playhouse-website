@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+---
+
+<BaseLayout title="Thank You | Playhouse Nursery" description="Thank you for contacting Playhouse Nursery.">
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero thanks-hero">
+      <div class="container narrow">
+        <h1>Thank You</h1>
+        <p>Your request has been received. The Playhouse team will contact you soon.</p>
+        <a class="button-link" href="/">Back to Home</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

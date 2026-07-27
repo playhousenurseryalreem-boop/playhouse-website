@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+import TourForm from "../../components/TourForm.astro";
+---
+
+<BaseLayout title="Admissions | Playhouse Nursery" description="Admissions information for Playhouse Nursery branches in Abu Dhabi and Dubai.">
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero parent-hero">
+      <div class="container narrow">
+        <h1>Admissions</h1>
+        <p>Begin your child’s Playhouse journey with a branch visit and a friendly conversation with our team.</p>
+      </div>
+    </section>
+    <section class="split-section">
+      <div class="container split-grid">
+        <div>
+          <h2>Ages We Welcome</h2>
+          <p>Our Dubai branch welcomes children from 45 days to 5 years. Our Abu Dhabi branches welcome children from 45 days to 4 years.</p>
+          <p>Children are supported at every stage with care, play, exploration and age-appropriate learning experiences.</p>
+        </div>
+        <img src="/gallery/Nursery-School-Admission-in-Gurgaon.jpg" alt="Children crafting at Playhouse Nursery" />
+      </div>
+    </section>
+    <section class="feature-band">
+      <div class="container card-grid">
+        <article><img src="/gallery/Preschool Children Playing.webp" alt="Choose a Playhouse branch" loading="lazy" /><h3>1. Choose a Branch</h3><p>Select Khalidiya, Al Reem or Mirdif based on your nearest location.</p></article>
+        <article><img src="/gallery/learning_through_play_602ef0c40c.png" alt="Chat with Playhouse admissions" loading="lazy" /><h3>2. Chat on WhatsApp</h3><p>Send a quick message to the branch admissions team to arrange a visit.</p></article>
+        <article><img src="/gallery/wcp-2403191506-0783927030.jpg" alt="Visit Playhouse Nursery" loading="lazy" /><h3>3. Visit Playhouse</h3><p>Meet the educators, explore the environment and discuss your child’s needs.</p></article>
+      </div>
+    </section>
+    <TourForm />
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

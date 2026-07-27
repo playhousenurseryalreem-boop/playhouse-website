@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+---
+
+<BaseLayout title="Playhouse Nursery Programmes" description="Creative early years programmes at Playhouse Nursery.">
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero camp-hero">
+      <div class="container narrow">
+        <h1>Creative Programmes</h1>
+        <p>Children create, build, explore, experiment and collaborate through engaging hands-on experiences.</p>
+        <a class="button-link" href="/services/">View Services</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

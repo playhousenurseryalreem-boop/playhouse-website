@@ -1,0 +1,51 @@
+---
+const { title = "Book a Visit", intro = "Interested in Playhouse Nursery for your child? Choose your nearest branch and send us your details. Our team will contact you soon.", selectedBranch = "" } = Astro.props;
+const locations = [
+  "Khalidiya Branch",
+  "Al Reem Branch",
+  "Mirdif Branch"
+];
+---
+
+<section class="request-section" id="form">
+  <div class="container">
+    <div class="request-card">
+      <span class="form-kicker">WhatsApp Booking</span>
+      <h2>{title}</h2>
+      <p>{intro}</p>
+      <form class="hero-booking-form request-booking-form">
+        <label>
+          <span>Parent name</span>
+          <input required placeholder="Your full name" name="FirstName" />
+        </label>
+        <label>
+          <span>Child age</span>
+          <select required name="your-age" aria-label="Child age">
+            <option value="">Select age</option>
+            <option value="45 days - 1 year">45 days - 1 year</option>
+            <option value="1 - 2 years">1 - 2 years</option>
+            <option value="2 - 3 years">2 - 3 years</option>
+            <option value="3 - 4 years">3 - 4 years</option>
+            <option value="4 - 5 years">4 - 5 years</option>
+          </select>
+        </label>
+        <label>
+          <span>Mobile number</span>
+          <input required type="tel" placeholder="+971 number" name="Phone" />
+        </label>
+        <label>
+          <span>Email address</span>
+          <input required type="email" placeholder="Email" name="your-email" />
+        </label>
+        <label class="full-field">
+          <span>Nearest branch</span>
+          <select required name="your-location" aria-label="Select nursery location">
+            <option value="">Select branch</option>
+            {locations.map((location) => <option value={location} selected={location === selectedBranch}>{location}</option>)}
+          </select>
+        </label>
+        <button type="submit">Send on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>

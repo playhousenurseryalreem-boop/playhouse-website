@@ -1,0 +1,76 @@
+---
+const navItems = [
+  ["Home", "/"],
+  ["About", "/about/"],
+  ["Curriculum", "/age-groups/"],
+  ["Our Services", "/services/"],
+  ["Admissions", "/admissions/"],
+  ["Branches", "/location/"],
+  ["Contact", "/contact-us/"]
+];
+---
+
+<header class="site-header site-header--solid">
+  <div class="container">
+    <nav class="primary-menu" aria-label="Primary navigation">
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="#book-visit-modal" class="mobile-tour" data-open-booking>Book a Visit</a>
+      <a class="brand" href="/">
+        <img src="/logo.png" width="1242" height="927" alt="PlayHouse Nursery" />
+        <span>Playhouse Nursery</span>
+      </a>
+      <ul class="menu-items">
+        {navItems.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+        <li><a class="call-button" href="#book-visit-modal" data-open-booking>Book a Visit</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="booking-modal" id="book-visit-modal" aria-hidden="true">
+  <div class="booking-modal__panel" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+    <button class="booking-modal__close" type="button" aria-label="Close booking form" data-close-booking>&times;</button>
+    <span class="form-kicker">WhatsApp Booking</span>
+    <h2 id="booking-modal-title">Book a Visit</h2>
+    <p>Share your details and choose your nearest Playhouse branch.</p>
+    <form class="booking-modal-form">
+      <label>
+        <span>Parent name</span>
+        <input required name="FirstName" placeholder="Your full name" />
+      </label>
+      <label>
+        <span>Child age</span>
+        <select required name="your-age" aria-label="Child age">
+          <option value="">Select age</option>
+          <option value="45 days - 1 year">45 days - 1 year</option>
+          <option value="1 - 2 years">1 - 2 years</option>
+          <option value="2 - 3 years">2 - 3 years</option>
+          <option value="3 - 4 years">3 - 4 years</option>
+          <option value="4 - 5 years">4 - 5 years</option>
+        </select>
+      </label>
+      <label>
+        <span>Mobile number</span>
+        <input required type="tel" name="Phone" placeholder="+971 number" />
+      </label>
+      <label>
+        <span>Email address</span>
+        <input required type="email" name="your-email" placeholder="Email" />
+      </label>
+      <label class="full-field">
+        <span>Nearest branch</span>
+        <select required name="your-location" aria-label="Select nearest branch">
+          <option value="">Select branch</option>
+          <option value="Khalidiya Branch">Khalidiya Branch</option>
+          <option value="Al Reem Branch">Al Reem Branch</option>
+          <option value="Mirdif Branch">Mirdif Branch</option>
+        </select>
+      </label>
+      <button type="submit">Send on WhatsApp</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+import TourForm from "../../components/TourForm.astro";
+import { branches, facilities } from "../../data/playhouse.js";
+
+export function getStaticPaths() {
+  return branches.map((branch) => ({ params: { slug: branch.slug }, props: { branch } }));
+}
+
+const { branch } = Astro.props;
+---
+
+<BaseLayout title={`${branch.name} | Playhouse Nursery`} description={`${branch.name} branch details, facilities and WhatsApp contact.`}>
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero branch-hero" style={`background-image: linear-gradient(rgb(0 0 0 / 34%), rgb(0 0 0 / 28%)), url('${branch.image}')`}>
+      <div class="container narrow">
+        <h1>About {branch.name}</h1>
+        <p>{branch.address}</p>
+      </div>
+    </section>
+    <section class="branch-detail-section">
+      <div class="container branch-detail-grid">
+        <div>
+          <h2>{branch.name}</h2>
+          <p>{branch.description}</p>
+          <ul class="facility-list">{facilities.slice(0, 6).map((facility) => <li>{facility}</li>)}</ul>
+          <a class="button-link" href={branch.whatsapp}>Book a Visit</a>
+          <a class="button-link secondary-link icon-link instagram-link" href={branch.instagram} target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+        <aside class="branch-contact-card">
+          <h3>{branch.name}</h3>
+          <p>{branch.address}</p>
+          <p>{branch.phone}</p>
+          <p><a class="icon-link email-link" href={`mailto:${branch.email}`}>{branch.email}</a></p>
+          <a class="button-link" href={branch.whatsapp}>Chat on WhatsApp</a>
+          <a class="button-link secondary-link icon-link instagram-link" href={branch.instagram} target="_blank" rel="noopener">Visit Instagram</a>
+        </aside>
+      </div>
+    </section>
+    <TourForm title={`Book a Visit at ${branch.name}`} selectedBranch={branch.label} />
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

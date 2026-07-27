@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+import TourForm from "../../components/TourForm.astro";
+import { branches } from "../../data/playhouse.js";
+---
+
+<BaseLayout title="Book a Visit | Playhouse Nursery" description="Book a visit at Playhouse Nursery Khalidiya, Al Reem or Mirdif.">
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero contact-hero">
+      <div class="container narrow">
+        <h1>Book a Visit</h1>
+        <p>Choose your nearest branch and chat directly with our team on WhatsApp.</p>
+      </div>
+    </section>
+    <section class="branch-whatsapp-section">
+      <div class="container whatsapp-grid">
+        {branches.map((branch) => (
+          <article class="whatsapp-card">
+            <h2>{branch.label}</h2>
+            <p>{branch.address}</p>
+            <a class="button-link" href={branch.whatsapp}>Chat on WhatsApp</a>
+            <a href={branch.whatsapp}>{branch.phone}</a>
+            <a class="icon-link email-link" href={`mailto:${branch.email}`}>{branch.email}</a>
+            <a class="icon-link instagram-link" href={branch.instagram} target="_blank" rel="noopener">Visit Instagram</a>
+          </article>
+        ))}
+      </div>
+    </section>
+    <TourForm />
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

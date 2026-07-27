@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+import TourForm from "../../components/TourForm.astro";
+import { team } from "../../data/playhouse";
+---
+
+<BaseLayout title="About Playhouse Nursery | Early Years Center" description="Learn about Playhouse Nursery, an early years center serving families across Abu Dhabi and Dubai.">
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero about-hero">
+      <div class="container narrow">
+        <h1>Welcome from our Principal</h1>
+        <p>We are committed to creating an exceptional early learning experience where every child feels valued, inspired and empowered to thrive.</p>
+      </div>
+    </section>
+    <section class="split-section">
+      <div class="container split-grid">
+        <div>
+          <h2>The Playhouse Journey</h2>
+          <p>Since 2016, Playhouse Nursery has been a trusted destination for exceptional early childhood education across the UAE.</p>
+          <p>Our branches are fully licensed and certified, with Dubai approved by KHDA and Abu Dhabi approved by ADEK. Every detail is thoughtfully designed to give children an enriching beginning and families complete confidence.</p>
+        </div>
+        <img src="/gallery/Nursery-School-Admission-in-Gurgaon.jpg" alt="Teacher and children at Playhouse Nursery" />
+      </div>
+    </section>
+    <section class="text-block">
+      <div class="container narrow">
+        <h2>What We Believe</h2>
+        <p>Our goal is to maximize each child's learning potential by stimulating intellectual, social, creative, physical and emotional growth through high-quality play-based experiences.</p>
+      </div>
+    </section>
+    <section class="feature-band">
+      <div class="container feature-grid">
+        <article><img src="/gallery/blog-gallery-1767079345-0.jpeg" alt="Group learning" /><h3>Play-Based Learning</h3><p>Children learn through meaningful play, structured activities and child-led exploration.</p></article>
+        <article><img src="/gallery/wcp-2403191506-0783927030.jpg" alt="Teacher and child drawing" /><h3>Caring Educators</h3><p>Our trained educators nurture every child’s individual strengths, interests and confidence.</p></article>
+      </div>
+    </section>
+    <section class="team-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Our Team</h2>
+          <p>Meet the caring educators and support team who make Playhouse Nursery warm, safe and inspiring every day.</p>
+        </div>
+        <div class="team-grid">
+          {team.map((member) => (
+            <article class="team-card">
+              <span class="team-avatar">{member.name.replace("Ms. ", "").charAt(0)}</span>
+              <h2>{member.name}</h2>
+              <h3>{member.role}</h3>
+              <ul>
+                {member.details.map((detail) => <li>{detail}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+    <TourForm />
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

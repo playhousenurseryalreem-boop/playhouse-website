@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+import TourForm from "../../components/TourForm.astro";
+
+const areas = [
+  ["Communication & Language", "Building confident communicators through conversations, storytelling and meaningful interactions.", "/gallery/blog-gallery-1767079345-0.jpeg"],
+  ["Physical Development", "Supporting healthy growth, coordination, independence and confidence through active play.", "/gallery/play-school.webp"],
+  ["Personal, Social & Emotional Development", "Helping children develop self-confidence, friendships, resilience and emotional wellbeing.", "/gallery/Preschool Children Playing.webp"],
+  ["Literacy", "Encouraging a love for reading, storytelling, sounds and early writing skills.", "/gallery/images.jpeg"],
+  ["Mathematics", "Developing problem-solving skills, number awareness and logical thinking through engaging activities.", "/gallery/learning_through_play_602ef0c40c.png"],
+  ["Understanding the World", "Inspiring curiosity about people, cultures, nature, technology and the world around them.", "/gallery/Best-Nursery-School-in-Chembur-Near-Govandi.png"],
+  ["Expressive Arts & Design", "Encouraging creativity and imagination through art, music, role play and creative expression.", "/gallery/premium_photo-1663106419176-ab3e42499a5c.avif"]
+];
+---
+
+<BaseLayout title="Playhouse Nursery Curriculum | British EYFS" description="Explore the British EYFS curriculum and seven areas of learning at Playhouse Nursery.">
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero age-hero">
+      <div class="container narrow">
+        <h1>British EYFS Curriculum</h1>
+        <p>A foundation built for excellence through play, care, discovery and structured early years learning.</p>
+      </div>
+    </section>
+    <section class="split-section">
+      <div class="container split-grid">
+        <div>
+          <h2>Explore Our Curriculum</h2>
+          <p>At Playhouse Nursery, we follow the British Early Years Foundation Stage Curriculum, providing a rich and engaging learning journey designed to support every child.</p>
+          <p>We use a balance of teacher-led and child-initiated play because play underpins all development and learning for young children.</p>
+        </div>
+        <img src="/gallery/learning_through_play_602ef0c40c.png" alt="Creative EYFS activity" />
+      </div>
+    </section>
+    <section class="feature-band">
+      <div class="container card-grid">
+        {areas.map(([title, text, image]) => <article><img src={image} alt={title} loading="lazy" /><h3>{title}</h3><p>{text}</p></article>)}
+      </div>
+    </section>
+    <TourForm />
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

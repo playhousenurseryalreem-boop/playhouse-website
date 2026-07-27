@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+import TourForm from "../../components/TourForm.astro";
+import { facilities } from "../../data/playhouse.js";
+---
+
+<BaseLayout title="Playhouse Nursery Environment & Facilities" description="Explore Playhouse Nursery facilities, outdoor play, sensory zones, reading areas and classrooms.">
+  <Header />
+  <main class="inner-page">
+    <section class="page-hero env-hero">
+      <div class="container narrow">
+        <h1>Our Learning Environment</h1>
+        <p>Purpose-built spaces designed to inspire curiosity, creativity, confidence and independence.</p>
+      </div>
+    </section>
+    <section class="split-section">
+      <div class="container split-grid">
+        <div>
+          <h2>Safe, Nurturing and Inclusive</h2>
+          <p>Our settings provide a safe, nurturing and inclusive space where every child is valued and supported, with areas for discovery, role play, literacy, culture, outdoor movement and creative expression.</p>
+          <ul class="pill-list">{facilities.map((facility) => <li>{facility}</li>)}</ul>
+        </div>
+        <img src="/gallery/child-s-dream-nursery-dabholi-surat-playgroups-93xvrlmwu2.webp" alt="Playhouse learning environment" />
+      </div>
+    </section>
+    <TourForm />
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>
