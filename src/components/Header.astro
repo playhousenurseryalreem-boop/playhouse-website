@@ -19,12 +19,26 @@ const navItems = [
         <span></span>
       </button>
       <a href="#book-visit-modal" class="mobile-tour" data-open-booking>Book a Visit</a>
+      <label class="language-switch mobile-language" aria-label="Select language">
+        <select data-language-select>
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+        </select>
+      </label>
       <a class="brand" href="/">
         <img src="/logo.png" width="1242" height="927" alt="PlayHouse Nursery" />
         <span>Playhouse Nursery</span>
       </a>
       <ul class="menu-items">
         {navItems.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+        <li>
+          <label class="language-switch desktop-language" aria-label="Select language">
+            <select data-language-select>
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+            </select>
+          </label>
+        </li>
         <li><a class="call-button" href="#book-visit-modal" data-open-booking>Book a Visit</a></li>
       </ul>
     </nav>

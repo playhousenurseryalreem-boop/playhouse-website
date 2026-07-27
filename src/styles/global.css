@@ -108,7 +108,7 @@ img {
 .site-header {
   position: absolute;
   inset: 0 0 auto;
-  z-index: 10;
+  z-index: 90;
   padding: 6px 0;
   background: rgba(231, 245, 223, 0.96);
   box-shadow: 0 8px 30px rgb(36 89 158 / 10%);
@@ -159,8 +159,29 @@ img {
 }
 
 .menu-toggle,
-.mobile-tour {
+.mobile-tour,
+.mobile-language {
   display: none;
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+}
+
+.language-switch.mobile-language {
+  display: none;
+}
+
+.language-switch select {
+  min-height: 34px;
+  padding: 0 26px 0 10px;
+  border: 1px solid rgb(36 89 158 / 28%);
+  border-radius: 0;
+  color: var(--primary);
+  background-color: rgb(255 255 255 / 54%);
+  font: 700 12px var(--main-font-name);
+  cursor: pointer;
 }
 
 .menu-items {
@@ -205,6 +226,52 @@ img {
   color: var(--primary);
   font-weight: 700;
   white-space: nowrap;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+html[dir="rtl"] .primary-menu,
+html[dir="rtl"] .brand,
+html[dir="rtl"] .menu-items,
+html[dir="rtl"] .hero-booking-form,
+html[dir="rtl"] .booking-modal-form,
+html[dir="rtl"] .chat-widget__panel,
+html[dir="rtl"] .icon-link {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hero-home-copy,
+html[dir="rtl"] .split-grid,
+html[dir="rtl"] .text-block,
+html[dir="rtl"] .location-card,
+html[dir="rtl"] .whatsapp-card,
+html[dir="rtl"] .team-card,
+html[dir="rtl"] .branch-detail-grid {
+  text-align: right;
+}
+
+html[dir="rtl"] .narrow,
+html[dir="rtl"] .page-hero,
+html[dir="rtl"] .section-head,
+html[dir="rtl"] .google-reviews-section {
+  text-align: center;
+}
+
+html[dir="rtl"] .hero-booking-card,
+html[dir="rtl"] .request-card,
+html[dir="rtl"] .booking-modal__panel {
+  text-align: right;
+}
+
+html[dir="rtl"] .media-frame {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .pill-list {
+  padding-right: 0;
 }
 
 .booking-modal {
@@ -1565,8 +1632,13 @@ img {
     font-size: 20px;
   }
 
+  .desktop-language {
+    display: none;
+  }
+
   .menu-toggle,
-  .mobile-tour {
+  .mobile-tour,
+  .language-switch.mobile-language {
     display: inline-flex;
   }
 
@@ -1587,15 +1659,27 @@ img {
   }
 
   .mobile-tour {
-    order: 3;
+    order: 4;
     margin-left: auto;
     color: var(--primary);
     font-size: 14px;
     font-weight: 600;
   }
 
+  .mobile-language {
+    order: 3;
+    justify-self: end;
+  }
+
+  .mobile-language select {
+    min-height: 32px;
+    padding: 0 18px 0 7px;
+    font-size: 11px;
+  }
+
   .menu-items {
     position: absolute;
+    z-index: 110;
     top: 82px;
     left: 0;
     right: 0;
@@ -1704,8 +1788,8 @@ img {
 
   .primary-menu {
     display: grid;
-    grid-template-columns: 38px minmax(0, 1fr) auto;
-    gap: 8px;
+    grid-template-columns: 34px minmax(0, 1fr) 62px auto;
+    gap: 7px;
     min-height: 58px;
   }
 
@@ -1730,13 +1814,20 @@ img {
     align-items: center;
     justify-content: center;
     min-height: 34px;
-    padding: 0 9px;
+    padding: 0 8px;
     border: 1px solid rgb(36 89 158 / 30%);
     color: var(--primary);
     background: rgb(255 255 255 / 34%);
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1;
     white-space: nowrap;
+  }
+
+  .mobile-language select {
+    width: 62px;
+    min-height: 32px;
+    padding: 0 5px;
+    font-size: 10px;
   }
 
   .menu-toggle {

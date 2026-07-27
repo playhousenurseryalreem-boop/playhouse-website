@@ -22,23 +22,63 @@ const branchNumbers = {
 
 const getValue = (form, name) => form.querySelector(`[name="${name}"]`)?.value?.trim() || "";
 
+const getCurrentLanguage = () => localStorage.getItem("playhouse-language") || document.documentElement.lang || "en";
+
+const branchDisplayNames = {
+  en: {
+    "Khalidiya Branch": "Khalidiya",
+    "Al Reem Branch": "Al Reem",
+    "Mirdif Branch": "Mirdif"
+  },
+  ar: {
+    "Khalidiya Branch": "الخالدية",
+    "Al Reem Branch": "الريم",
+    "Mirdif Branch": "مردف"
+  }
+};
+
+const ageDisplayNames = {
+  ar: {
+    "45 days - 1 year": "45 يوماً - سنة",
+    "1 - 2 years": "سنة - سنتان",
+    "2 - 3 years": "سنتان - 3 سنوات",
+    "3 - 4 years": "3 - 4 سنوات",
+    "4 - 5 years": "4 - 5 سنوات"
+  }
+};
+
 const buildWhatsAppUrl = (form) => {
   const branch = getValue(form, "your-location") || "Khalidiya Branch";
   const number = branchNumbers[branch] || branchNumbers["Khalidiya Branch"];
   const parentName = [getValue(form, "FirstName"), getValue(form, "LastName")].filter(Boolean).join(" ");
   const childName = [getValue(form, "Child_s_First_Name__c"), getValue(form, "Child_s_Last_Name__c")].filter(Boolean).join(" ");
-  const messageLines = [
-    `Hi Playhouse ${branch.replace(" Branch", "")}!`,
-    "I would like to book a visit.",
-    parentName ? `Parent name: ${parentName}` : "",
-    getValue(form, "Phone") ? `Mobile: ${getValue(form, "Phone")}` : "",
-    getValue(form, "your-email") ? `Email: ${getValue(form, "your-email")}` : "",
-    childName ? `Child name: ${childName}` : "",
-    getValue(form, "your-age") ? `Child age: ${getValue(form, "your-age")}` : "",
-    `Nearest branch: ${branch}`
-  ].filter(Boolean).join("\n");
+  const language = getCurrentLanguage() === "ar" ? "ar" : "en";
+  const branchName = branchDisplayNames[language][branch] || branch.replace(" Branch", "");
+  const childAge = getValue(form, "your-age");
+  const childAgeLabel = ageDisplayNames[language]?.[childAge] || childAge;
+  const messageLines = language === "ar"
+    ? [
+        `مرحباً بلاي هاوس ${branchName}!`,
+        "أرغب في حجز زيارة.",
+        parentName ? `اسم ولي الأمر: ${parentName}` : "",
+        getValue(form, "Phone") ? `رقم الهاتف: ${getValue(form, "Phone")}` : "",
+        getValue(form, "your-email") ? `البريد الإلكتروني: ${getValue(form, "your-email")}` : "",
+        childName ? `اسم الطفل: ${childName}` : "",
+        childAgeLabel ? `عمر الطفل: ${childAgeLabel}` : "",
+        `أقرب فرع: ${branchName}`
+      ]
+    : [
+        `Hi Playhouse ${branchName}!`,
+        "I would like to book a visit.",
+        parentName ? `Parent name: ${parentName}` : "",
+        getValue(form, "Phone") ? `Mobile: ${getValue(form, "Phone")}` : "",
+        getValue(form, "your-email") ? `Email: ${getValue(form, "your-email")}` : "",
+        childName ? `Child name: ${childName}` : "",
+        childAgeLabel ? `Child age: ${childAgeLabel}` : "",
+        `Nearest branch: ${branchName}`
+      ];
 
-  return `https://wa.me/${number}?text=${encodeURIComponent(messageLines)}`;
+  return `https://wa.me/${number}?text=${encodeURIComponent(messageLines.filter(Boolean).join("\n"))}`;
 };
 
 const bookingModal = document.querySelector(".booking-modal");
