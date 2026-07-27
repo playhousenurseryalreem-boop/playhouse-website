@@ -42,13 +42,6 @@ export const generalEmails = [
   "Manager@playhousenursery.ae"
 ];
 
-export const learningMoments = [
-  "/gallery/phn-nature-table.png",
-  "/gallery/phn-easel-girl.jpg",
-  "/gallery/phn-craft-teacher.jpg",
-  "/gallery/phn-boy-easel.jpg"
-];
-
 export const googleReviews = [
   "/gallery/google-review-wala-khader.png",
   "/gallery/google-review-merliza-ghennam.png",

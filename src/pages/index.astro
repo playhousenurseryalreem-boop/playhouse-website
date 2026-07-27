@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ChatWidget from "../components/ChatWidget.astro";
 import TourForm from "../components/TourForm.astro";
-import { branches, facilities, googleReviews, learningMoments } from "../data/playhouse.js";
+import { branches, facilities, googleReviews } from "../data/playhouse.js";
 ---
 
 <BaseLayout title="Playhouse Nursery | Early Years Center in Abu Dhabi & Dubai" description="Playhouse Nursery offers British EYFS early childhood education across Khalidiya, Al Reem and Mirdif branches.">
@@ -121,19 +121,6 @@ import { branches, facilities, googleReviews, learningMoments } from "../data/pl
             <a class="icon-link instagram-link" href={branch.instagram} target="_blank" rel="noopener">Visit Instagram</a>
             <a href={`/branches/${branch.slug}/`}>View Branch</a>
           </article>
-        ))}
-      </div>
-    </section>
-    <section class="moments-section">
-      <div class="container narrow">
-        <h2>A Day at Playhouse</h2>
-        <p>Bright classrooms, caring teachers, outdoor play, creative discovery and real Playhouse moments from every part of the nursery journey.</p>
-      </div>
-      <div class="container moments-grid">
-        {learningMoments.map((image, index) => (
-          <figure class={index % 7 === 0 ? "moment-card moment-card--wide" : "moment-card"}>
-            <img src={image} alt={`Playhouse Nursery learning moment ${index + 1}`} loading="lazy" />
-          </figure>
         ))}
       </div>
     </section>

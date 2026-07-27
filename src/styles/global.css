@@ -65,7 +65,8 @@ body {
   color: var(--primary);
   font-size: 15px;
   font-weight: 700;
-  animation: loadingPulse 900ms ease-in-out infinite alternate;
+  opacity: 0;
+  animation: loadingPulse 900ms ease-in-out 500ms infinite alternate;
 }
 
 @keyframes loadingPulse {
@@ -1154,55 +1155,6 @@ html[dir="rtl"] .pill-list {
   color: var(--muted);
 }
 
-.moments-section {
-  padding: 82px 0;
-  background: #ffffff;
-}
-
-.moments-section h2 {
-  margin: 0 0 10px;
-  color: var(--primary);
-  font-family: var(--secondary-font-name);
-  font-size: 44px;
-  font-weight: 400;
-  line-height: 1.1;
-}
-
-.moments-section p {
-  margin: 0 auto 34px;
-  color: var(--muted);
-}
-
-.moments-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.moment-card {
-  min-height: 220px;
-  margin: 0;
-  overflow: hidden;
-  border-radius: 8px;
-  background: var(--soft-green);
-  box-shadow: 0 16px 42px rgb(36 89 158 / 10%);
-}
-
-.moment-card--wide {
-  grid-column: span 2;
-}
-
-.moment-card img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
-.moment-card--wide img {
-  aspect-ratio: 16 / 9;
-}
-
 .review-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2059,7 +2011,6 @@ html[dir="rtl"] .pill-list {
   .split-section,
   .text-block,
   .feature-band,
-  .moments-section,
   .google-reviews-section,
   .location-grid-section,
   .request-section,
@@ -2118,24 +2069,8 @@ html[dir="rtl"] .pill-list {
   .location-grid,
   .whatsapp-grid,
   .team-grid,
-  .moments-grid,
   .review-grid {
     gap: 18px;
-  }
-
-  .moments-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .moment-card,
-  .moment-card--wide {
-    grid-column: auto;
-    min-height: 0;
-  }
-
-  .moment-card img,
-  .moment-card--wide img {
-    aspect-ratio: 4 / 3;
   }
 
   .review-grid {
@@ -2143,7 +2078,6 @@ html[dir="rtl"] .pill-list {
     width: min(100% - 32px, 480px);
   }
 
-  .moments-section h2,
   .google-reviews-section h2 {
     font-size: 34px;
   }
