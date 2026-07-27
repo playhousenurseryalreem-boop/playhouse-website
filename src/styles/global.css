@@ -235,6 +235,7 @@ img {
   position: relative;
   z-index: 88;
   overflow: hidden;
+  direction: ltr;
   background: linear-gradient(90deg, var(--primary-dark), var(--primary), #2f7fc4);
   color: #ffffff;
   box-shadow: 0 10px 24px rgb(36 89 158 / 18%);
@@ -249,7 +250,6 @@ img {
 
 .announcement-track--ar {
   display: none;
-  animation-name: announcementScrollRtl;
 }
 
 .announcement-track span {
