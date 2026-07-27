@@ -895,14 +895,14 @@ html[dir="rtl"] .pill-list {
   padding: 110px 0 80px;
   color: #ffffff;
   text-align: center;
-  background: linear-gradient(rgb(0 0 0 / 44%), rgb(0 0 0 / 36%)), url("/gallery/storytime-circle.png") center/cover no-repeat;
+  background: linear-gradient(rgb(0 0 0 / 44%), rgb(0 0 0 / 36%)), url("/gallery/phn-circle-wall.jpg") center/cover no-repeat;
 }
 
 .home-hero {
   min-height: 690px;
   padding: 112px 0 70px;
   color: #ffffff;
-  background: linear-gradient(90deg, rgb(0 0 0 / 48%), rgb(0 0 0 / 10%)), url("/gallery/home-hero-blocks.png") center/cover no-repeat;
+  background: linear-gradient(90deg, rgb(0 0 0 / 48%), rgb(0 0 0 / 10%)), url("/gallery/phn-block-tower.png") center/cover no-repeat;
 }
 
 .hero-home-grid {
@@ -1034,12 +1034,23 @@ html[dir="rtl"] .pill-list {
 }
 
 .env-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/water-sensory-play.png");
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/phn-teacher-play.jpg");
 }
 
-.location-hero,
+.location-hero {
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/phn-classroom-wide.jpg");
+}
+
 .contact-hero {
   background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/swing-playground.png");
+}
+
+.book-visit-hero {
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/phn-craft-table.jpg");
+}
+
+.team-hero {
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 38%)), url("/gallery/phn-dressup-play.jpg");
 }
 
 .parent-hero {
@@ -1047,7 +1058,7 @@ html[dir="rtl"] .pill-list {
 }
 
 .camp-hero {
-  background-image: linear-gradient(rgb(0 0 0 / 22%), rgb(0 0 0 / 22%)), url("/gallery/music-movement.png");
+  background-image: linear-gradient(rgb(0 0 0 / 22%), rgb(0 0 0 / 22%)), url("/gallery/phn-music-movement.png");
 }
 
 .thanks-hero {
@@ -1441,10 +1452,6 @@ html[dir="rtl"] .pill-list {
 
 .contact-page-panel {
   padding-bottom: 30px;
-}
-
-.playhouse-hero {
-  background-image: linear-gradient(90deg, rgb(0 0 0 / 42%), rgb(0 0 0 / 10%)), url("/gallery/home-hero-blocks.png");
 }
 
 .pill-list {
