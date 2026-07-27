@@ -10,6 +10,8 @@ const navItems = [
 ];
 
 const registrationMessage = "September registration is open now for 2026-27. Register now for early bird discount.";
+const registrationMessageArabic = "التسجيل لشهر سبتمبر مفتوح الآن للعام 2026-27. سجل الآن للحصول على خصم الحجز المبكر.";
+const announcementRepeats = Array.from({ length: 8 });
 ---
 
 <header class="site-header site-header--solid">
@@ -49,11 +51,11 @@ const registrationMessage = "September registration is open now for 2026-27. Reg
 </header>
 
 <div class="announcement-bar" aria-label="Registration announcement">
-  <div class="announcement-track">
-    <span data-i18n={registrationMessage}>{registrationMessage}</span>
-    <span data-i18n={registrationMessage}>{registrationMessage}</span>
-    <span data-i18n={registrationMessage}>{registrationMessage}</span>
-    <span data-i18n={registrationMessage}>{registrationMessage}</span>
+  <div class="announcement-track announcement-track--en">
+    {announcementRepeats.map(() => <span>{registrationMessage}</span>)}
+  </div>
+  <div class="announcement-track announcement-track--ar">
+    {announcementRepeats.map(() => <span>{registrationMessageArabic}</span>)}
   </div>
 </div>
 

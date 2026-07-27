@@ -247,6 +247,11 @@ img {
   animation: announcementScroll 24s linear infinite;
 }
 
+.announcement-track--ar {
+  display: none;
+  animation-name: announcementScrollRtl;
+}
+
 .announcement-track span {
   flex: 0 0 auto;
   padding: 10px 42px;
@@ -258,8 +263,17 @@ img {
   white-space: nowrap;
 }
 
-html[dir="rtl"] .announcement-track span {
+html[dir="rtl"] .announcement-track--en {
+  display: none;
+}
+
+html[dir="rtl"] .announcement-track--ar {
+  display: flex;
+}
+
+.announcement-track--ar span {
   direction: rtl;
+  text-transform: none;
 }
 
 @keyframes announcementScroll {
@@ -268,6 +282,15 @@ html[dir="rtl"] .announcement-track span {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes announcementScrollRtl {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
