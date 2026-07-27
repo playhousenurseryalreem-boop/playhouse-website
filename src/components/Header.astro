@@ -8,6 +8,8 @@ const navItems = [
   ["Branches", "/location/"],
   ["Contact", "/contact-us/"]
 ];
+
+const registrationMessage = "September registration is open now for 2026-27. Register now for early bird discount.";
 ---
 
 <header class="site-header site-header--solid">
@@ -46,11 +48,21 @@ const navItems = [
   </div>
 </header>
 
+<div class="announcement-bar" aria-label="Registration announcement">
+  <div class="announcement-track">
+    <span>{registrationMessage}</span>
+    <span>{registrationMessage}</span>
+    <span>{registrationMessage}</span>
+    <span>{registrationMessage}</span>
+  </div>
+</div>
+
 <div class="booking-modal" id="book-visit-modal" aria-hidden="true">
   <div class="booking-modal__panel" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
     <button class="booking-modal__close" type="button" aria-label="Close booking form" data-close-booking>&times;</button>
     <span class="form-kicker">WhatsApp Booking</span>
     <h2 id="booking-modal-title">Book a Visit</h2>
+    <p class="form-announcement">{registrationMessage}</p>
     <p>Share your details and choose your nearest Playhouse branch.</p>
     <form class="booking-modal-form">
       <label>

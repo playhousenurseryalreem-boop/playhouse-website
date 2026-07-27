@@ -231,6 +231,41 @@ img {
   white-space: nowrap;
 }
 
+.announcement-bar {
+  position: relative;
+  z-index: 88;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary), #2f7fc4);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgb(36 89 158 / 18%);
+}
+
+.announcement-track {
+  display: flex;
+  width: max-content;
+  animation: announcementScroll 24s linear infinite;
+}
+
+.announcement-track span {
+  flex: 0 0 auto;
+  padding: 10px 42px;
+  font-size: clamp(18px, 2.1vw, 28px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@keyframes announcementScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 html[dir="rtl"] body {
   text-align: right;
 }
@@ -332,6 +367,19 @@ html[dir="rtl"] .pill-list {
   color: var(--text);
   font-size: 13px;
   line-height: 1.45;
+}
+
+.booking-modal p.form-announcement,
+.hero-booking-card p.form-announcement,
+.request-card p.form-announcement {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .booking-modal-form,
@@ -1730,12 +1778,24 @@ html[dir="rtl"] .pill-list {
     color: var(--primary);
   }
 
+  .announcement-bar {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+  }
+
+  .announcement-track span {
+    padding: 9px 32px;
+    font-size: 18px;
+  }
+
   .hero {
-    padding-top: 100px;
+    padding-top: 138px;
   }
 
   .notice {
-    top: 100px;
+    top: 138px;
   }
 
   .hero-grid,
@@ -1753,7 +1813,7 @@ html[dir="rtl"] .pill-list {
   }
 
   .page-hero {
-    padding: 96px 0 58px;
+    padding: 134px 0 58px;
   }
 
   .age-row.reverse-row img {
@@ -1766,7 +1826,7 @@ html[dir="rtl"] .pill-list {
 
   .home-hero {
     min-height: auto;
-    padding: 96px 0 46px;
+    padding: 134px 0 46px;
   }
 
   .hero-home-grid {
@@ -1877,6 +1937,15 @@ html[dir="rtl"] .pill-list {
     font-size: 15px;
   }
 
+  .announcement-bar {
+    top: 72px;
+  }
+
+  .announcement-track span {
+    padding: 8px 26px;
+    font-size: 15px;
+  }
+
   .booking-modal {
     align-items: flex-end;
     padding: 14px;
@@ -1897,7 +1966,7 @@ html[dir="rtl"] .pill-list {
   }
 
   .home-hero {
-    padding: 92px 0 38px;
+    padding: 126px 0 38px;
     background-position: 44% center;
   }
 

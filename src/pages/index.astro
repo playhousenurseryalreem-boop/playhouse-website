@@ -5,6 +5,8 @@ import Footer from "../components/Footer.astro";
 import ChatWidget from "../components/ChatWidget.astro";
 import TourForm from "../components/TourForm.astro";
 import { branches, facilities, googleReviews } from "../data/playhouse.js";
+
+const registrationMessage = "September registration is open now for 2026-27. Register now for early bird discount.";
 ---
 
 <BaseLayout title="Playhouse Nursery | Early Years Center in Abu Dhabi & Dubai" description="Playhouse Nursery offers British EYFS early childhood education across Khalidiya, Al Reem and Mirdif branches.">
@@ -19,6 +21,7 @@ import { branches, facilities, googleReviews } from "../data/playhouse.js";
         <aside class="hero-booking-card" aria-label="Book a visit on WhatsApp">
           <span class="form-kicker">WhatsApp Booking</span>
           <h2>Book a Visit</h2>
+          <p class="form-announcement">{registrationMessage}</p>
           <p>Choose a branch and we will receive your details directly on WhatsApp.</p>
           <form class="hero-booking-form">
             <label>
