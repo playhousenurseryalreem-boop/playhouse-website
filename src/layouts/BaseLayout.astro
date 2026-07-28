@@ -2,6 +2,8 @@
 import "../styles/global.css";
 
 const { title, description } = Astro.props;
+const googleAnalyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
+const googleTagManagerId = import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID;
 ---
 
 <!doctype html>
@@ -11,6 +13,35 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#e7f5df" />
+    {
+      googleTagManagerId && (
+        <script define:vars={{ googleTagManagerId }}>
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, "script", "dataLayer", googleTagManagerId);
+        </script>
+      )
+    }
+    {googleAnalyticsId && <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>}
+    {
+      googleAnalyticsId && (
+        <script define:vars={{ googleAnalyticsId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", googleAnalyticsId);
+        </script>
+      )
+    }
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -27,6 +58,18 @@ const { title, description } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Kameron:wght@400;500;700&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body class="is-loading">
+    {
+      googleTagManagerId && (
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${googleTagManagerId}`}
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden"
+          />
+        </noscript>
+      )
+    }
     <div class="site-preloader" aria-label="Loading Playhouse Nursery">
       <div class="site-preloader__inner">
         <img src="/download.gif" width="180" height="180" alt="" />
