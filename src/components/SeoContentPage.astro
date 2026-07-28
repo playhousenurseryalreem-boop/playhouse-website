@@ -18,6 +18,7 @@ const imageIndex = model.slug.split("").reduce((total, char) => total + char.cha
 const contentImage = model.kind === "blog" ? model.heroImage : secondaryImages[imageIndex];
 const relatedBranches = branches.filter((branch) => branch.slug !== model.branch.slug).slice(0, 2);
 const branchCityLabel = model.branch.slug === "mirdif" ? "Dubai" : "Abu Dhabi";
+const renderBody = (body) => (Array.isArray(body) ? body : [body]);
 ---
 
 <Header />
@@ -48,13 +49,13 @@ const branchCityLabel = model.branch.slug === "mirdif" ? "Dubai" : "Abu Dhabi";
     <div class="container seo-content-grid">
       <article class="seo-article">
         <p class="seo-lead">
-          Playhouse Nursery created this page for parents searching for <strong>{model.keyword}</strong> and wanting a clear, useful answer before they call or visit. The goal is simple: help families understand the nearest branch, what the nursery experience feels like, how children learn, and what practical questions to ask before admission.
+          {model.lead}
         </p>
 
         {model.sections.map((section) => (
           <section>
             <h2>{section.heading}</h2>
-            <p>{section.body}</p>
+            {renderBody(section.body).map((paragraph) => <p>{paragraph}</p>)}
           </section>
         ))}
 
@@ -86,17 +87,14 @@ const branchCityLabel = model.branch.slug === "mirdif" ? "Dubai" : "Abu Dhabi";
         <section>
           <h2>How the nearest branch fits this search</h2>
           <p>
-            For this page, the recommended branch is <strong>{model.branch.name}</strong>. It is highlighted because it best matches the intent behind <strong>{model.keyword}</strong>. Families can use the WhatsApp form to ask about availability, book a tour, check timings or understand whether the branch is suitable for their child's age and stage.
-          </p>
-          <p>
-            The branch is part of the wider Playhouse Nursery network, so parents can also compare the other locations if their commute changes or if another branch is more convenient. The aim is to make the next step easy, whether the family is still researching or ready to visit.
+            The most relevant Playhouse branch for <strong>{model.keyword}</strong> is <strong>{model.branch.name}</strong>. Families can use the WhatsApp form to ask about availability, book a tour, check timings or understand whether the branch is suitable for their child's age and stage.
           </p>
         </section>
 
         <section>
-          <h2>Why this page is useful for AI search and parent questions</h2>
+          <h2>Clear answers for common parent questions</h2>
           <p>
-            Parents increasingly search in full questions: which nursery is near my area, what age should my child start, how much do fees vary, and what curriculum should I choose? This page is structured to answer those questions directly. It uses clear headings, local context, practical comparisons, a branch recommendation, FAQs and a direct booking form so both parents and search engines can understand the page quickly.
+            Parents often search in full questions: which nursery is near my area, what age should my child start, how do I compare fees, and what curriculum should I choose? The answers below are written simply so families can make a confident shortlist before speaking with the nursery team.
           </p>
         </section>
 

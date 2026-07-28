@@ -61,19 +61,86 @@ const cityAuthority = (city) =>
     ? "KHDA-approved Dubai branch"
     : "ADEK-approved Abu Dhabi branches";
 
-const introOpeners = [
-  "Choosing an early years setting is easier when the page speaks to your daily route, your child's age and the kind of care your family needs.",
-  "Parents usually search locally because convenience, trust and child comfort all matter before they book a nursery visit.",
-  "A good nursery page should answer practical parent questions, not only repeat a location name.",
-  "Families comparing nurseries need clear details about curriculum, care, timings, age groups and the nearest branch."
-];
-
 const learningAngles = [
   "British EYFS learning, play-based discovery, communication development and confidence-building routines",
   "safe settling, social development, creative play, early literacy, numeracy and school-readiness experiences",
   "sensory exploration, outdoor play, role play, Arabic learning, storytelling and teacher-guided discovery",
   "warm care, structured routines, qualified educators and developmentally appropriate activities"
 ];
+
+const sentenceCase = (value) => value.charAt(0).toUpperCase() + value.slice(1);
+
+const branchShortName = (branch) => branch.label.replace(" Branch", "");
+
+const branchLocationLine = (branch) => {
+  if (branch.slug === "mirdif") {
+    return "The Mirdif branch is a practical choice for Dubai families who want a nursery close to residential communities, malls, schools and everyday commuting routes.";
+  }
+
+  if (branch.slug === "al-reem") {
+    return "The Al Reem branch works well for families living around the island, nearby towers and Abu Dhabi city routes where a short, predictable nursery commute matters.";
+  }
+
+  return "The Khalidiya branch is suited to Abu Dhabi families who want a central nursery option near established residential areas, offices and daily school runs.";
+};
+
+const parentNeedFor = (keyword) => {
+  const value = normalize(keyword);
+
+  if (value.includes("fee") || value.includes("affordable")) {
+    return {
+      label: "fees and value",
+      detail:
+        "Parents comparing fees usually want clarity, not pressure. A useful nursery conversation should explain age groups, timings, registration steps, what is included, and how the programme supports the child's development each day."
+    };
+  }
+
+  if (value.includes("admission") || value.includes("registration")) {
+    return {
+      label: "admissions and registration",
+      detail:
+        "For admission searches, families need a simple next step: check availability, understand documents, choose the right branch, and arrange a visit so the child can see the environment before starting."
+    };
+  }
+
+  if (value.includes("baby") || value.includes("infant") || value.includes("45 days")) {
+    return {
+      label: "baby care",
+      detail:
+        "For babies and infants, parents should look closely at calm routines, hygiene, safe sleep practices, gentle handling, small-group attention and how teachers share updates through the day."
+    };
+  }
+
+  if (value.includes("toddler") || value.includes("1 year") || value.includes("2 year")) {
+    return {
+      label: "toddler learning",
+      detail:
+        "Toddlers need patient educators, movement, language-rich play, sensory activities and predictable routines that help them become more independent without feeling rushed."
+    };
+  }
+
+  if (value.includes("eyfs") || value.includes("british") || value.includes("curriculum")) {
+    return {
+      label: "British EYFS curriculum",
+      detail:
+        "Curriculum searches should lead parents to more than a label. British EYFS learning should be visible through play, observation, communication, personal development, early literacy, early maths and creative exploration."
+    };
+  }
+
+  if (value.includes("safe") || value.includes("trusted") || value.includes("qualified") || value.includes("trained")) {
+    return {
+      label: "trust and safety",
+      detail:
+        "Trust comes from trained staff, clean spaces, secure routines, attentive supervision, transparent communication and a team that notices how each child settles, plays and grows."
+    };
+  }
+
+  return {
+    label: "nursery choice",
+    detail:
+      "Most nursery searches are really about fit: the right branch, warm teachers, a clear curriculum, safe routines and a place where the child can settle happily before parents commit."
+  };
+};
 
 export const localPageModel = (areaPage) => {
   const branch = nearestBranchFor(areaPage);
@@ -82,6 +149,8 @@ export const localPageModel = (areaPage) => {
   const nearbyLabel = areaPage.city === "Dubai" ? "Dubai families" : "Abu Dhabi families";
   const title = `${keyword} | Playhouse Nursery`;
   const description = `${keyword} with British EYFS learning, caring teachers and WhatsApp booking at Playhouse ${branch.label.replace(" Branch", "")}.`;
+  const branchName = branchShortName(branch);
+  const branchAuthority = cityAuthority(areaPage.city);
 
   return {
     kind: "local",
@@ -90,23 +159,33 @@ export const localPageModel = (areaPage) => {
     title,
     description,
     h1: `${keyword}`,
-    eyebrow: `${areaPage.city} local nursery guide`,
+    eyebrow: `${areaPage.city} nursery near ${areaPage.area}`,
     branch,
     heroImage: branch.image,
     selectedBranch: branch.label,
-    intro: `${pick(introOpeners, seed)} Playhouse Nursery supports ${nearbyLabel} through its ${cityAuthority(areaPage.city)}, welcoming children from ${branchAgeRange(branch)} with ${pick(learningAngles, seed + 1)}.`,
+    intro: `Looking for a caring ${keyword.toLowerCase()}? Playhouse ${branchName} gives families a warm early years setting with safe routines, friendly teachers and British EYFS-inspired learning for children from ${branchAgeRange(branch)}.`,
+    lead: `A nursery decision is personal. Parents in ${areaPage.area} are usually balancing commute time, a child's confidence, daily communication and the feeling they get when they walk into a classroom. Playhouse ${branchName} is the closest Playhouse option for this search, offering a calm, welcoming place where children can settle, play, talk, explore and begin building the habits they need for school and life.`,
     sections: [
       {
-        heading: `Why parents in ${areaPage.area} look for a nearby nursery`,
-        body: `For families in ${areaPage.area}, the right nursery has to fit morning drop-off, work schedules and a child's emotional readiness. Playhouse Nursery keeps the search practical by connecting the local area with the nearest branch, clear WhatsApp booking and an early years programme built around confidence, communication and independence.`
+        heading: `A nearby nursery choice for ${areaPage.area} families`,
+        body: [
+          `For families living or working around ${areaPage.area}, a nursery has to fit real life. Morning drop-off should feel manageable, the route should be predictable, and parents should know that their child is being cared for by adults who understand early childhood.`,
+          `${branchLocationLine(branch)} The team can help parents compare age groups, available timings, tour slots and settling plans before making a decision.`
+        ]
       },
       {
-        heading: `Nearest Playhouse branch for ${areaPage.area}`,
-        body: `${branch.name} is the recommended branch for this page. The branch serves parents looking for ${keyword.toLowerCase()}, with caring staff, child-friendly spaces, secure routines and branch-specific guidance before admission. Families can book a visit, ask about availability and choose the best age group for their child.`
+        heading: `What children experience at Playhouse ${branchName}`,
+        body: [
+          `Children at Playhouse learn through play, conversation, movement, stories, sensory discovery, creative work and teacher-guided activities. The approach is gentle and structured, so children feel secure while still having space to explore.`,
+          `The ${branchAuthority} supports ${nearbyLabel} with ${pick(learningAngles, seed + 1)}. Parents can ask about baby care, toddler routines, preschool learning and school-readiness support during a branch visit.`
+        ]
       },
       {
-        heading: "Learning approach",
-        body: `Children learn through purposeful play, teacher-led moments and daily routines that support the seven areas of early development. The page focus is local, but the promise stays consistent: safe care, British EYFS foundations, communication growth, social confidence and a gentle path toward school readiness.`
+        heading: `Why ${areaPage.area} parents book a visit first`,
+        body: [
+          `A visit helps parents see the classroom mood, teacher interaction, hygiene standards and how children move through the day. It also gives the nursery team a chance to understand the child's age, routine, language, confidence and any settling worries.`,
+          `If you are comparing ${keyword.toLowerCase()}, WhatsApp is the fastest way to ask about current availability, fees, documents and the best next step for your family.`
+        ]
       }
     ],
     highlights: [
@@ -125,8 +204,11 @@ export const keywordPageModel = (page) => {
   const branch = nearestBranchFor({ keyword: page.keyword });
   const seed = hashText(page.keyword);
   const city = normalize(page.keyword).includes("dubai") ? "Dubai" : normalize(page.keyword).includes("abu dhabi") ? "Abu Dhabi" : "UAE";
-  const title = `${page.keyword} | Playhouse Nursery`;
-  const description = `Parent guide for ${page.keyword} with British EYFS, safe care, admissions support and WhatsApp booking at Playhouse Nursery.`;
+  const displayKeyword = sentenceCase(page.keyword);
+  const searchNeed = parentNeedFor(page.keyword);
+  const branchName = branchShortName(branch);
+  const title = `${displayKeyword} | Playhouse Nursery`;
+  const description = `${displayKeyword} with British EYFS learning, caring teachers, safe routines and WhatsApp booking at Playhouse Nursery.`;
 
   return {
     kind: "keyword",
@@ -134,28 +216,38 @@ export const keywordPageModel = (page) => {
     keyword: page.keyword,
     title,
     description,
-    h1: `${page.keyword}`,
-    eyebrow: "Parent SEO guide",
+    h1: displayKeyword,
+    eyebrow: `${searchNeed.label} for parents`,
     branch,
     heroImage: branch.image,
     selectedBranch: branch.label,
-    intro: `${pick(introOpeners, seed)} This guide explains ${page.keyword} from a parent-first point of view, including care quality, curriculum, branch choice and what to ask before admission.`,
+    intro: `Searching for ${page.keyword} usually means you are ready to compare real nursery options, not just browse names. Playhouse ${branchName} helps parents understand care, curriculum, safety, admissions and the right branch for their child's age and routine.`,
+    lead: `Parents searching for ${page.keyword} are often trying to answer one simple question: which nursery will feel right for my child and still work for our family schedule? Playhouse Nursery focuses on warm care, British EYFS-inspired learning and clear parent communication across its Khalidiya, Al Reem and Mirdif branches, so the decision can be made with confidence instead of guesswork.`,
     sections: [
       {
-        heading: `What ${page.keyword} should mean for parents`,
-        body: `The phrase "${page.keyword}" usually means a parent is close to making a decision. Playhouse Nursery answers that intent with practical information about early years care, British EYFS learning, age groups, staff support, safety routines and how to book a visit at the most relevant branch.`
+        heading: `What to look for when comparing ${page.keyword}`,
+        body: [
+          `${searchNeed.detail}`,
+          `The strongest sign is usually how the nursery feels in person. Look for calm classrooms, responsive teachers, clean learning areas, safe entry routines and children who are busy, comfortable and engaged.`
+        ]
       },
       {
-        heading: "How Playhouse supports this need",
-        body: `${branch.name} is highlighted for this topic because it best matches the location or intent behind the keyword. Families can ask about fees, admissions, available timings, settling support and the right class environment for babies, toddlers and preschool children.`
+        heading: `How Playhouse ${branchName} supports this search`,
+        body: [
+          `${branch.name} is the most relevant Playhouse branch for this search. Families can ask about available seats, age groups, fees, documents, settling support and the daily routine before arranging a tour.`,
+          `${branchLocationLine(branch)} The branch welcomes children from ${branchAgeRange(branch)} and gives parents a direct WhatsApp route for quick questions.`
+        ]
       },
       {
-        heading: "What to check before choosing",
-        body: `Parents should compare licensing, teacher warmth, hygiene, communication, child comfort and whether the curriculum prepares children socially and emotionally. A nursery should feel safe, responsive and transparent before a family commits.`
+        heading: "The learning style parents can expect",
+        body: [
+          `Playhouse uses play-based early learning with British EYFS foundations. Children build language, independence, social confidence, early literacy, numeracy, creativity and movement through daily experiences that feel natural for their age.`,
+          `The right nursery should never feel like a rushed decision. A branch visit helps parents see how teachers speak to children, how routines are managed and whether the environment matches the family's expectations.`
+        ]
       }
     ],
     highlights: [
-      `Focused guide for ${page.keyword}`,
+      `Practical information for ${page.keyword}`,
       `Recommended branch: ${branch.label}`,
       `Age range: ${branchAgeRange(branch)}`,
       "British EYFS learning pathway",
@@ -169,6 +261,8 @@ export const keywordPageModel = (page) => {
 export const blogPageModel = (topic) => {
   const branch = nearestBranchFor({ keyword: topic.title });
   const seed = hashText(topic.title);
+  const searchNeed = parentNeedFor(topic.title);
+  const branchName = branchShortName(branch);
   const title = `${topic.title} | Playhouse Nursery Blog`;
   const description = `${topic.title} - practical early years guidance from Playhouse Nursery for UAE parents.`;
 
@@ -179,7 +273,7 @@ export const blogPageModel = (topic) => {
     title,
     description,
     h1: topic.title,
-    eyebrow: "Playhouse parent guide",
+    eyebrow: `${searchNeed.label} advice`,
     branch,
     heroImage: pick([
       "/gallery/phn-classroom-wide.jpg",
@@ -189,19 +283,29 @@ export const blogPageModel = (topic) => {
       "/gallery/phn-outdoor-play.png"
     ], seed),
     selectedBranch: branch.label,
-    intro: `${pick(introOpeners, seed)} This article gives parents a useful, nursery-informed answer to "${topic.title}" while connecting the advice to everyday early years decisions in the UAE.`,
+    intro: `${topic.title} is a real question for many UAE families. This article gives clear, practical guidance from an early years point of view, with simple steps parents can use before choosing a nursery or booking a visit.`,
+    lead: `Every family reaches nursery decisions at a different pace. Some parents are ready to register, some are comparing branches, and others are still asking whether their child is ready. The best answer is usually found by looking at the child's routine, confidence, age, language, independence and the kind of support parents need during the week.`,
     sections: [
       {
-        heading: "Parent takeaway",
-        body: `The most useful answer is usually practical: understand your child's stage, visit the nursery, ask how teachers communicate with families and look for routines that help children feel safe. Playhouse Nursery uses warm care and play-based learning to make early education feel calm and purposeful.`
+        heading: "What parents should think about first",
+        body: [
+          `${searchNeed.detail}`,
+          `A good nursery conversation should leave parents clearer than before. Ask what the day looks like, how settling is handled, how teachers update families and what support is available if the child needs time to adjust.`
+        ]
       },
       {
-        heading: "How this connects to nursery life",
-        body: `In a nursery setting, this topic connects to daily routines, teacher observation, language growth, social confidence and child independence. Parents can use it as a checklist before a tour or as a guide while supporting learning at home.`
+        heading: "How this looks inside nursery life",
+        body: [
+          `At Playhouse, early learning happens through stories, songs, role play, movement, outdoor time, sensory activities, creative projects and guided small-group moments. Teachers observe how children communicate, share, solve problems and become more independent.`,
+          `This matters because nursery is not only preparation for school. It is also where many children learn to separate gently, make friends, follow routines, express feelings and enjoy learning with trusted adults.`
+        ]
       },
       {
-        heading: "When to speak to the nursery team",
-        body: `If a parent is comparing branches, worried about settling, checking fees or planning admission, it is better to ask directly. The Playhouse team can explain age groups, branch availability, documents, timings and the best next step for the child.`
+        heading: `When to speak with Playhouse ${branchName}`,
+        body: [
+          `If this topic connects to your child's next step, speak with ${branch.name}. The team can explain age groups from ${branchAgeRange(branch)}, current availability, documents, tour timing and how the branch supports settling.`,
+          `${branchLocationLine(branch)} WhatsApp is usually the quickest way to share your child's age and preferred branch, then arrange a visit that fits your schedule.`
+        ]
       }
     ],
     highlights: [
