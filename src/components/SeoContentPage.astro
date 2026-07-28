@@ -1,0 +1,160 @@
+---
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import ChatWidget from "./ChatWidget.astro";
+import SeoHeroForm from "./SeoHeroForm.astro";
+import TourForm from "./TourForm.astro";
+import { facilities, branches } from "../data/playhouse.js";
+
+const { model } = Astro.props;
+const secondaryImages = [
+  "/gallery/phn-classroom-wide.jpg",
+  "/gallery/phn-craft-teacher.jpg",
+  "/gallery/phn-reading-group.png",
+  "/gallery/phn-teacher-play.jpg",
+  "/gallery/phn-outdoor-play.png"
+];
+const imageIndex = model.slug.split("").reduce((total, char) => total + char.charCodeAt(0), 0) % secondaryImages.length;
+const contentImage = model.kind === "blog" ? model.heroImage : secondaryImages[imageIndex];
+const relatedBranches = branches.filter((branch) => branch.slug !== model.branch.slug).slice(0, 2);
+const branchCityLabel = model.branch.slug === "mirdif" ? "Dubai" : "Abu Dhabi";
+---
+
+<Header />
+<main class="seo-page">
+  <section class="seo-hero">
+    <div class="seo-hero__media" aria-hidden="true">
+      <img src={model.heroImage} alt="" loading="eager" />
+    </div>
+    <div class="container seo-hero__grid">
+      <div class="seo-hero__copy">
+        <span>{model.eyebrow}</span>
+        <h1>{model.h1}</h1>
+        <p>{model.intro}</p>
+        <div class="seo-hero__actions">
+          <a class="button-link" href="#form">Book a Visit</a>
+          <a class="button-link secondary-link" href={`/branches/${model.branch.slug}/`}>View {model.branch.label}</a>
+        </div>
+      </div>
+      <SeoHeroForm
+        title={`Book a Visit for ${model.branch.label.replace(" Branch", "")}`}
+        intro={`Ask about ${model.keyword}, available age groups and the nearest Playhouse branch.`}
+        selectedBranch={model.selectedBranch}
+      />
+    </div>
+  </section>
+
+  <section class="seo-content-band">
+    <div class="container seo-content-grid">
+      <article class="seo-article">
+        <p class="seo-lead">
+          Playhouse Nursery created this page for parents searching for <strong>{model.keyword}</strong> and wanting a clear, useful answer before they call or visit. The goal is simple: help families understand the nearest branch, what the nursery experience feels like, how children learn, and what practical questions to ask before admission.
+        </p>
+
+        {model.sections.map((section) => (
+          <section>
+            <h2>{section.heading}</h2>
+            <p>{section.body}</p>
+          </section>
+        ))}
+
+        <section>
+          <h2>What families can expect at Playhouse Nursery</h2>
+          <p>
+            Across Khalidiya, Al Reem and Mirdif, Playhouse Nursery focuses on warm relationships, age-appropriate learning and a calm daily rhythm. Children are encouraged to explore through play, listen to stories, build vocabulary, practise early maths, enjoy music and movement, create art, develop independence and learn how to share space with other children. The nursery environment is designed to feel caring and predictable, because young children learn best when they feel safe.
+          </p>
+          <p>
+            Parents comparing <strong>{model.keyword}</strong> often want more than a list of facilities. They want to know whether teachers will notice their child's personality, whether updates will be shared clearly, and whether the branch is suitable for babies, toddlers or preschool children. Playhouse answers those questions through branch tours, WhatsApp communication and practical admission guidance.
+          </p>
+        </section>
+
+        <figure class="seo-image-panel">
+          <img src={contentImage} alt={`${model.keyword} at Playhouse Nursery`} loading="lazy" />
+          <figcaption>{model.branch.name} supports families looking for {model.keyword.toLowerCase()} with caring early years learning.</figcaption>
+        </figure>
+
+        <section>
+          <h2>Parent checklist before booking a nursery visit</h2>
+          <p>
+            Before choosing a nursery, parents should check the branch location, licensing, staff approach, curriculum, daily routine, hygiene standards, classroom comfort and how teachers support settling. It also helps to ask how the nursery communicates with parents, what documents are needed for admission, how fees are structured and which age group is the best fit for the child.
+          </p>
+          <ul class="seo-check-list">
+            {model.highlights.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+
+        <section>
+          <h2>How the nearest branch fits this search</h2>
+          <p>
+            For this page, the recommended branch is <strong>{model.branch.name}</strong>. It is highlighted because it best matches the intent behind <strong>{model.keyword}</strong>. Families can use the WhatsApp form to ask about availability, book a tour, check timings or understand whether the branch is suitable for their child's age and stage.
+          </p>
+          <p>
+            The branch is part of the wider Playhouse Nursery network, so parents can also compare the other locations if their commute changes or if another branch is more convenient. The aim is to make the next step easy, whether the family is still researching or ready to visit.
+          </p>
+        </section>
+
+        <section>
+          <h2>Why this page is useful for AI search and parent questions</h2>
+          <p>
+            Parents increasingly search in full questions: which nursery is near my area, what age should my child start, how much do fees vary, and what curriculum should I choose? This page is structured to answer those questions directly. It uses clear headings, local context, practical comparisons, a branch recommendation, FAQs and a direct booking form so both parents and search engines can understand the page quickly.
+          </p>
+        </section>
+
+        <section class="seo-faq-section">
+          <h2>FAQs about {model.keyword}</h2>
+          <div class="seo-faq-list">
+            {model.faqs.map((faq) => (
+              <details>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </article>
+
+      <aside class="seo-sidebar">
+        <div class="seo-sidebar-card">
+          <h2>{model.branch.label}</h2>
+          <p>{model.branch.address}</p>
+          <p>{model.branch.phone}</p>
+          <a class="button-link" href={model.branch.whatsapp}>Chat on WhatsApp</a>
+        </div>
+        <div class="seo-sidebar-card">
+          <h2>Explore More Branches</h2>
+          {relatedBranches.map((branch) => (
+            <a class="seo-related-link" href={`/branches/${branch.slug}/`}>
+              <strong>{branch.label}</strong>
+              <span>{branch.slug === "mirdif" ? "Dubai" : "Abu Dhabi"}</span>
+            </a>
+          ))}
+        </div>
+        <div class="seo-sidebar-card">
+          <h2>Popular Facilities</h2>
+          <ul>
+            {facilities.slice(0, 6).map((facility) => <li>{facility}</li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="seo-branch-strip">
+    <div class="container">
+      <h2>Playhouse Nursery branches in {branchCityLabel} and the UAE</h2>
+      <div class="seo-mini-branches">
+        {branches.map((branch) => (
+          <a href={`/branches/${branch.slug}/`}>
+            <img src={branch.image} alt={branch.name} loading="lazy" />
+            <span>{branch.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TourForm title={`Ask About ${model.keyword}`} selectedBranch={model.selectedBranch} />
+</main>
+<Footer />
+<ChatWidget />
+<script is:inline src="/scripts/main.js"></script>

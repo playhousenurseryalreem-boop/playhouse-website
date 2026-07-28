@@ -2,6 +2,7 @@
 import "../styles/global.css";
 
 const { title, description } = Astro.props;
+const { canonical, schema } = Astro.props;
 const googleAnalyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
 const googleTagManagerId = import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID ?? "GTM-PWWT2ZK4";
 ---
@@ -12,6 +13,7 @@ const googleTagManagerId = import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID ?? "GTM-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
     <meta name="theme-color" content="#e7f5df" />
     {
       googleTagManagerId && (
@@ -56,6 +58,7 @@ const googleTagManagerId = import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID ?? "GTM-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Kameron:wght@400;500;700&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
   </head>
   <body class="is-loading">
     {

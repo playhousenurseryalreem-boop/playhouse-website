@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SeoContentPage from "../../components/SeoContentPage.astro";
+import { blogTopics } from "../../data/seoContent.generated.js";
+import { blogPageModel, pageSchema, siteUrl } from "../../data/seoHelpers.js";
+
+export function getStaticPaths() {
+  return blogTopics.map((topic) => ({
+    params: { slug: topic.slug },
+    props: { topic }
+  }));
+}
+
+const { topic } = Astro.props;
+const model = blogPageModel(topic);
+const canonical = `${siteUrl}/blog/${model.slug}/`;
+---
+
+<BaseLayout title={model.title} description={model.description} canonical={canonical} schema={pageSchema(model, canonical)}>
+  <SeoContentPage model={model} />
+</BaseLayout>

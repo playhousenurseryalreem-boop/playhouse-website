@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SeoContentPage from "../components/SeoContentPage.astro";
+import { keywordPages, localAreas } from "../data/seoContent.generated.js";
+import { keywordPageModel, keywordRouteSlug, pageSchema, siteUrl } from "../data/seoHelpers.js";
+
+export function getStaticPaths() {
+  const reservedSlugs = new Set([
+    "about",
+    "admissions",
+    "age-groups",
+    "book-a-tour",
+    "book-a-visit",
+    "branches",
+    "contact-us",
+    "environment",
+    "location",
+    "parent-info",
+    "services",
+    "team",
+    "thanks",
+    "young-innovators-camp-uae",
+    "blog"
+  ]);
+
+  return keywordPages
+    .filter((page) => !reservedSlugs.has(page.slug))
+    .map((page) => ({
+      params: { slug: keywordRouteSlug(page, localAreas, keywordPages) },
+      props: { page }
+    }));
+}
+
+const { page } = Astro.props;
+const model = keywordPageModel(page);
+const routeSlug = keywordRouteSlug(page, localAreas, keywordPages);
+const canonical = `${siteUrl}/${routeSlug}/`;
+---
+
+<BaseLayout title={model.title} description={model.description} canonical={canonical} schema={pageSchema(model, canonical)}>
+  <SeoContentPage model={model} />
+</BaseLayout>

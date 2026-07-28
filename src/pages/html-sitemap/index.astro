@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ChatWidget from "../../components/ChatWidget.astro";
+import { blogTopics, keywordPages, localAreas } from "../../data/seoContent.generated.js";
+import { keywordRouteSlug } from "../../data/seoHelpers.js";
+
+const title = "HTML Sitemap | Playhouse Nursery";
+const description = "Browse Playhouse Nursery SEO pages, local nursery pages and parent blog guides.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main class="inner-page seo-page">
+    <section class="page-hero">
+      <div class="container narrow">
+        <h1>HTML Sitemap</h1>
+        <p>Browse Playhouse Nursery location pages, keyword guides and parent blog articles.</p>
+      </div>
+    </section>
+    <section class="seo-content-band">
+      <div class="container sitemap-grid">
+        <article>
+          <h2>Local Nursery Pages</h2>
+          <ul>
+            {localAreas.map((area) => <li><a href={`/nursery-in-${area.slug}/`}>Nursery in {area.area} {area.city}</a></li>)}
+          </ul>
+        </article>
+        <article>
+          <h2>Keyword Pages</h2>
+          <ul>
+            {keywordPages.map((page) => <li><a href={`/${keywordRouteSlug(page, localAreas, keywordPages)}/`}>{page.keyword}</a></li>)}
+          </ul>
+        </article>
+        <article>
+          <h2>Blog Guides</h2>
+          <ul>
+            {blogTopics.map((topic) => <li><a href={`/blog/${topic.slug}/`}>{topic.title}</a></li>)}
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <ChatWidget />
+  <script is:inline src="/scripts/main.js"></script>
+</BaseLayout>

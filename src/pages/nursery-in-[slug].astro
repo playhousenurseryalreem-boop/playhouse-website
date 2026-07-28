@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SeoContentPage from "../components/SeoContentPage.astro";
+import { localAreas } from "../data/seoContent.generated.js";
+import { localPageModel, pageSchema, siteUrl } from "../data/seoHelpers.js";
+
+export function getStaticPaths() {
+  return localAreas.map((areaPage) => ({
+    params: { slug: areaPage.slug },
+    props: { areaPage }
+  }));
+}
+
+const { areaPage } = Astro.props;
+const model = localPageModel(areaPage);
+const canonical = `${siteUrl}/nursery-in-${model.slug}/`;
+---
+
+<BaseLayout title={model.title} description={model.description} canonical={canonical} schema={pageSchema(model, canonical)}>
+  <SeoContentPage model={model} />
+</BaseLayout>

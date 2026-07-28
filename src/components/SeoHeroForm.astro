@@ -1,0 +1,45 @@
+---
+const { title = "Book a Visit", intro = "Share your details and our team will reply on WhatsApp.", selectedBranch = "" } = Astro.props;
+const locations = ["Khalidiya Branch", "Al Reem Branch", "Mirdif Branch"];
+const registrationMessage = "September registration is open now for 2026-27. Register now for early bird discount.";
+---
+
+<aside class="seo-hero-form" aria-label="Book a nursery visit on WhatsApp">
+  <span class="form-kicker">WhatsApp Booking</span>
+  <h2>{title}</h2>
+  <p class="form-announcement">{registrationMessage}</p>
+  <p>{intro}</p>
+  <form class="hero-booking-form">
+    <label>
+      <span>Parent name</span>
+      <input required name="FirstName" placeholder="Parent name" />
+    </label>
+    <label>
+      <span>Child age</span>
+      <select required name="your-age" aria-label="Child age">
+        <option value="">Child age</option>
+        <option value="45 days - 1 year">45 days - 1 year</option>
+        <option value="1 - 2 years">1 - 2 years</option>
+        <option value="2 - 3 years">2 - 3 years</option>
+        <option value="3 - 4 years">3 - 4 years</option>
+        <option value="4 - 5 years">4 - 5 years</option>
+      </select>
+    </label>
+    <label>
+      <span>Mobile number</span>
+      <input required type="tel" name="Phone" placeholder="+971 mobile number" />
+    </label>
+    <label>
+      <span>Email address</span>
+      <input required type="email" name="your-email" placeholder="Email address" />
+    </label>
+    <label class="full-field">
+      <span>Nearest branch</span>
+      <select required name="your-location" aria-label="Select nearest branch">
+        <option value="">Nearest branch</option>
+        {locations.map((location) => <option value={location} selected={location === selectedBranch}>{location}</option>)}
+      </select>
+    </label>
+    <button type="submit">Send on WhatsApp</button>
+  </form>
+</aside>
