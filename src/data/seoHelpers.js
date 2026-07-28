@@ -14,7 +14,7 @@ export const slugify = (value) =>
     .replace(/^-+|-+$/g, "");
 
 export const keywordRouteSlug = (page, localAreas = [], keywordPages = []) => {
-  const localRouteSlugs = new Set(localAreas.map((area) => `nursery-in-${area.slug}`));
+  const localRouteSlugs = new Set(localAreas.map((area) => `nursery-in-${localRouteSlug(area)}`));
   const baseSlug = localRouteSlugs.has(page.slug) ? `${page.slug}-guide` : page.slug;
   const duplicateIndex = keywordPages.filter(
     (candidate) => candidate.slug === page.slug && Number(candidate.number) < Number(page.number)
@@ -22,6 +22,14 @@ export const keywordRouteSlug = (page, localAreas = [], keywordPages = []) => {
 
   return duplicateIndex > 0 ? `${baseSlug}-${duplicateIndex + 1}` : baseSlug;
 };
+
+export const areaLabel = (areaPage) => {
+  const area = areaPage.area.trim();
+  const city = areaPage.city.trim();
+  return normalize(area).includes(normalize(city)) ? area : `${area} ${city}`;
+};
+
+export const localRouteSlug = (areaPage) => slugify(areaLabel(areaPage));
 
 export const nearestBranchFor = ({ city = "", area = "", keyword = "" }) => {
   const haystack = normalize(`${city} ${area} ${keyword}`);
@@ -59,7 +67,7 @@ const hashText = (value) =>
 const cityAuthority = (city) =>
   city === "Dubai"
     ? "KHDA-approved Dubai branch"
-    : "ADEK-approved Abu Dhabi branches";
+    : "ADEK-approved Abu Dhabi branch";
 
 const learningAngles = [
   "British EYFS learning, play-based discovery, communication development and confidence-building routines",
@@ -145,7 +153,7 @@ const parentNeedFor = (keyword) => {
 export const localPageModel = (areaPage) => {
   const branch = nearestBranchFor(areaPage);
   const seed = hashText(`${areaPage.area}-${areaPage.city}`);
-  const keyword = `Nursery in ${areaPage.area} ${areaPage.city}`;
+  const keyword = `Nursery in ${areaLabel(areaPage)}`;
   const nearbyLabel = areaPage.city === "Dubai" ? "Dubai families" : "Abu Dhabi families";
   const title = `${keyword} | Playhouse Nursery`;
   const description = `${keyword} with British EYFS learning, caring teachers and WhatsApp booking at Playhouse ${branch.label.replace(" Branch", "")}.`;
@@ -155,6 +163,7 @@ export const localPageModel = (areaPage) => {
   return {
     kind: "local",
     slug: areaPage.slug,
+    areaPage,
     keyword,
     title,
     description,
@@ -320,40 +329,44 @@ export const blogPageModel = (topic) => {
   };
 };
 
-const localFaqs = (areaPage, branch, keyword) => [
-  {
-    question: `Is there a Playhouse nursery near ${areaPage.area} ${areaPage.city}?`,
-    answer: `${branch.name} is the recommended Playhouse branch for families searching for ${keyword.toLowerCase()}. Parents can book a visit on WhatsApp and confirm the most convenient route.`
-  },
-  {
-    question: `Which branch should ${areaPage.area} parents contact?`,
-    answer: `${areaPage.area} families should contact ${branch.label}. The team can explain availability, age groups, timings and admission steps.`
-  },
-  {
-    question: `What curriculum does Playhouse offer near ${areaPage.area}?`,
-    answer: "Playhouse follows a British EYFS approach with play-based learning, communication development, social confidence, creative activities and school-readiness support."
-  },
-  {
-    question: `What ages are accepted for families from ${areaPage.area}?`,
-    answer: `${branch.name} welcomes children from ${branchAgeRange(branch)}, depending on the branch, availability and the child's developmental stage.`
-  },
-  {
-    question: `Can I book a nursery visit from this ${areaPage.area} page?`,
-    answer: "Yes. Use the WhatsApp booking form on this page to send your parent details, child age and nearest branch directly to the Playhouse team."
-  },
-  {
-    question: `Is Playhouse suitable for working parents in ${areaPage.area}?`,
-    answer: "Yes. Playhouse supports working families with clear communication, structured routines, caring staff and branch guidance for practical nursery planning."
-  },
-  {
-    question: `How do I compare nurseries near ${areaPage.area}?`,
-    answer: "Compare licensing, safety, teacher warmth, hygiene, parent updates, curriculum quality, branch distance and how comfortable your child feels during a visit."
-  },
-  {
-    question: `What should I ask during a nursery tour near ${areaPage.area}?`,
-    answer: "Ask about settling, staff training, daily routines, outdoor play, meals or snacks, parent updates, fees, admissions documents and school-readiness support."
-  }
-];
+const localFaqs = (areaPage, branch, keyword) => {
+  const displayArea = areaLabel(areaPage);
+
+  return [
+    {
+      question: `Is there a Playhouse nursery near ${displayArea}?`,
+      answer: `${branch.name} is the recommended Playhouse branch for families searching for ${keyword.toLowerCase()}. Parents can book a visit on WhatsApp and confirm the most convenient route.`
+    },
+    {
+      question: `Which branch should ${displayArea} parents contact?`,
+      answer: `${displayArea} families should contact ${branch.label}. The team can explain availability, age groups, timings and admission steps.`
+    },
+    {
+      question: `What curriculum does Playhouse offer near ${displayArea}?`,
+      answer: "Playhouse follows a British EYFS approach with play-based learning, communication development, social confidence, creative activities and school-readiness support."
+    },
+    {
+      question: `What ages are accepted for families from ${displayArea}?`,
+      answer: `${branch.name} welcomes children from ${branchAgeRange(branch)}, depending on the branch, availability and the child's developmental stage.`
+    },
+    {
+      question: `Can I book a nursery visit from this ${displayArea} page?`,
+      answer: "Yes. Use the WhatsApp booking form on this page to send your parent details, child age and nearest branch directly to the Playhouse team."
+    },
+    {
+      question: `Is Playhouse suitable for working parents in ${displayArea}?`,
+      answer: "Yes. Playhouse supports working families with clear communication, structured routines, caring staff and branch guidance for practical nursery planning."
+    },
+    {
+      question: `How do I compare nurseries near ${displayArea}?`,
+      answer: "Compare licensing, safety, teacher warmth, hygiene, parent updates, curriculum quality, branch distance and how comfortable your child feels during a visit."
+    },
+    {
+      question: `What should I ask during a nursery tour near ${displayArea}?`,
+      answer: "Ask about settling, staff training, daily routines, outdoor play, meals or snacks, parent updates, fees, admissions documents and school-readiness support."
+    }
+  ];
+};
 
 const keywordFaqs = (keyword, branch, city) => [
   {

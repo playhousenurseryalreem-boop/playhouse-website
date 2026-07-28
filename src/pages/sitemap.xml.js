@@ -1,5 +1,5 @@
 import { blogTopics, keywordPages, localAreas } from "../data/seoContent.generated.js";
-import { keywordRouteSlug, siteUrl } from "../data/seoHelpers.js";
+import { keywordRouteSlug, localRouteSlug, siteUrl } from "../data/seoHelpers.js";
 
 const staticPages = [
   "",
@@ -23,7 +23,7 @@ const staticPages = [
 
 const urls = [
   ...staticPages.map((slug) => `${siteUrl}/${slug ? `${slug}/` : ""}`),
-  ...localAreas.map((area) => `${siteUrl}/nursery-in-${area.slug}/`),
+  ...localAreas.map((area) => `${siteUrl}/nursery-in-${localRouteSlug(area)}/`),
   ...keywordPages.map((page) => `${siteUrl}/${keywordRouteSlug(page, localAreas, keywordPages)}/`),
   ...blogTopics.map((topic) => `${siteUrl}/blog/${topic.slug}/`)
 ];

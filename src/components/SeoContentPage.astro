@@ -5,6 +5,8 @@ import ChatWidget from "./ChatWidget.astro";
 import SeoHeroForm from "./SeoHeroForm.astro";
 import TourForm from "./TourForm.astro";
 import { facilities, branches } from "../data/playhouse.js";
+import { blogTopics, keywordPages, localAreas } from "../data/seoContent.generated.js";
+import { areaLabel, keywordRouteSlug, localRouteSlug } from "../data/seoHelpers.js";
 
 const { model } = Astro.props;
 const secondaryImages = [
@@ -19,6 +21,51 @@ const contentImage = model.kind === "blog" ? model.heroImage : secondaryImages[i
 const relatedBranches = branches.filter((branch) => branch.slug !== model.branch.slug).slice(0, 2);
 const branchCityLabel = model.branch.slug === "mirdif" ? "Dubai" : "Abu Dhabi";
 const renderBody = (body) => (Array.isArray(body) ? body : [body]);
+const pageCity = model.branch.slug === "mirdif" ? "Dubai" : "Abu Dhabi";
+const keywordText = model.keyword.toLowerCase();
+const currentPath =
+  model.kind === "blog"
+    ? `/blog/${model.slug}/`
+    : model.kind === "local"
+      ? `/nursery-in-${localRouteSlug(model.areaPage)}/`
+      : `/${model.routeSlug || model.slug}/`;
+const cityKeywordMatcher = (page) => {
+  const value = page.keyword.toLowerCase();
+
+  if (pageCity === "Dubai") {
+    return value.includes("dubai") || value.includes("mirdif") || value.includes("khda");
+  }
+
+  return value.includes("abu dhabi") || value.includes("khalidiya") || value.includes("reem") || value.includes("adek");
+};
+const localLinks = localAreas
+  .filter((area) => area.city === pageCity)
+  .filter((area) => `/nursery-in-${localRouteSlug(area)}/` !== currentPath)
+  .slice(0, 12)
+  .map((area) => ({
+    label: `Nursery in ${areaLabel(area)}`,
+    href: `/nursery-in-${localRouteSlug(area)}/`
+  }));
+const keywordLinks = keywordPages
+  .filter(cityKeywordMatcher)
+  .filter((page) => `/${keywordRouteSlug(page, localAreas, keywordPages)}/` !== currentPath)
+  .slice(0, 12)
+  .map((page) => ({
+    label: page.keyword,
+    href: `/${keywordRouteSlug(page, localAreas, keywordPages)}/`
+  }));
+const blogLinks = blogTopics
+  .filter((topic) => {
+    const value = topic.title.toLowerCase();
+    if (pageCity === "Dubai") return value.includes("dubai") || value.includes("mirdif") || !value.includes("abu dhabi");
+    return value.includes("abu dhabi") || value.includes("khalidiya") || value.includes("reem") || !value.includes("dubai");
+  })
+  .filter((topic) => `/blog/${topic.slug}/` !== currentPath)
+  .slice(0, 8)
+  .map((topic) => ({
+    label: topic.title,
+    href: `/blog/${topic.slug}/`
+  }));
 ---
 
 <Header />
@@ -134,6 +181,38 @@ const renderBody = (body) => (Array.isArray(body) ? body : [body]);
           </ul>
         </div>
       </aside>
+    </div>
+  </section>
+
+  <section class="seo-link-hub" aria-label={`${pageCity} nursery internal links`}>
+    <div class="container">
+      <div class="seo-link-hub__header">
+        <div>
+          <span>{pageCity} Nursery Links</span>
+          <h2>Explore more Playhouse nursery pages</h2>
+        </div>
+        <a class="seo-link-hub__more" href="/html-sitemap/">View all</a>
+      </div>
+      <div class="seo-link-hub__grid">
+        <article>
+          <h3>{pageCity} Area Pages</h3>
+          <ul>
+            {localLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+          </ul>
+        </article>
+        <article>
+          <h3>{pageCity} Keyword Pages</h3>
+          <ul>
+            {keywordLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+          </ul>
+        </article>
+        <article>
+          <h3>Parent Guides</h3>
+          <ul>
+            {blogLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+          </ul>
+        </article>
+      </div>
     </div>
   </section>
 

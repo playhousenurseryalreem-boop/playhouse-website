@@ -4,7 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import ChatWidget from "../../components/ChatWidget.astro";
 import { blogTopics, keywordPages, localAreas } from "../../data/seoContent.generated.js";
-import { keywordRouteSlug } from "../../data/seoHelpers.js";
+import { areaLabel, keywordRouteSlug, localRouteSlug } from "../../data/seoHelpers.js";
 
 const title = "HTML Sitemap | Playhouse Nursery";
 const description = "Browse Playhouse Nursery SEO pages, local nursery pages and parent blog guides.";
@@ -24,7 +24,7 @@ const description = "Browse Playhouse Nursery SEO pages, local nursery pages and
         <article>
           <h2>Local Nursery Pages</h2>
           <ul>
-            {localAreas.map((area) => <li><a href={`/nursery-in-${area.slug}/`}>Nursery in {area.area} {area.city}</a></li>)}
+            {localAreas.map((area) => <li><a href={`/nursery-in-${localRouteSlug(area)}/`}>Nursery in {areaLabel(area)}</a></li>)}
           </ul>
         </article>
         <article>

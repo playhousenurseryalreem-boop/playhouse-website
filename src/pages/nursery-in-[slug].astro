@@ -2,18 +2,18 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SeoContentPage from "../components/SeoContentPage.astro";
 import { localAreas } from "../data/seoContent.generated.js";
-import { localPageModel, pageSchema, siteUrl } from "../data/seoHelpers.js";
+import { localPageModel, localRouteSlug, pageSchema, siteUrl } from "../data/seoHelpers.js";
 
 export function getStaticPaths() {
   return localAreas.map((areaPage) => ({
-    params: { slug: areaPage.slug },
+    params: { slug: localRouteSlug(areaPage) },
     props: { areaPage }
   }));
 }
 
 const { areaPage } = Astro.props;
 const model = localPageModel(areaPage);
-const canonical = `${siteUrl}/nursery-in-${model.slug}/`;
+const canonical = `${siteUrl}/nursery-in-${localRouteSlug(areaPage)}/`;
 ---
 
 <BaseLayout title={model.title} description={model.description} canonical={canonical} schema={pageSchema(model, canonical)}>

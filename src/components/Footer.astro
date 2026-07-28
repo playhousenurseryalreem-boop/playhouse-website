@@ -1,5 +1,7 @@
 ---
 import { branches } from "../data/playhouse.js";
+import { keywordPages, localAreas } from "../data/seoContent.generated.js";
+import { areaLabel, keywordRouteSlug, localRouteSlug } from "../data/seoHelpers.js";
 
 const footerLinks = [
   ["About", "/about/"],
@@ -10,6 +12,34 @@ const footerLinks = [
   ["Admissions", "/admissions/"],
   ["Book a Visit", "/book-a-visit/"]
 ];
+
+const footerDubaiLinks = [
+  ...localAreas
+    .filter((area) => area.city === "Dubai")
+    .slice(0, 6)
+    .map((area) => [`Nursery in ${areaLabel(area)}`, `/nursery-in-${localRouteSlug(area)}/`]),
+  ...keywordPages
+    .filter((page) => {
+      const keyword = page.keyword.toLowerCase();
+      return keyword.includes("dubai") || keyword.includes("mirdif") || keyword.includes("khda");
+    })
+    .slice(0, 6)
+    .map((page) => [page.keyword, `/${keywordRouteSlug(page, localAreas, keywordPages)}/`])
+];
+
+const footerAbuDhabiLinks = [
+  ...localAreas
+    .filter((area) => area.city === "Abu Dhabi")
+    .slice(0, 6)
+    .map((area) => [`Nursery in ${areaLabel(area)}`, `/nursery-in-${localRouteSlug(area)}/`]),
+  ...keywordPages
+    .filter((page) => {
+      const keyword = page.keyword.toLowerCase();
+      return keyword.includes("abu dhabi") || keyword.includes("khalidiya") || keyword.includes("reem") || keyword.includes("adek");
+    })
+    .slice(0, 6)
+    .map((page) => [page.keyword, `/${keywordRouteSlug(page, localAreas, keywordPages)}/`])
+];
 ---
 
 <footer class="site-footer">
@@ -18,6 +48,21 @@ const footerLinks = [
       <ul>
         {footerLinks.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
       </ul>
+    </nav>
+    <nav class="footer-seo-links" aria-label="Popular nursery pages">
+      <div>
+        <h2>Dubai Nursery Pages</h2>
+        <ul>
+          {footerDubaiLinks.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2>Abu Dhabi Nursery Pages</h2>
+        <ul>
+          {footerAbuDhabiLinks.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+        </ul>
+      </div>
+      <a class="footer-seo-links__more" href="/html-sitemap/">View all nursery pages</a>
     </nav>
     <div class="footer-socials" aria-label="Branch Instagram links">
       {branches.map((branch) => (
