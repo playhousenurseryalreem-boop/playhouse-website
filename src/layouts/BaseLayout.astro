@@ -3,7 +3,7 @@ import "../styles/global.css";
 
 const { title, description } = Astro.props;
 const googleAnalyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
-const googleTagManagerId = import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID;
+const googleTagManagerId = import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID ?? "GTM-PWWT2ZK4";
 ---
 
 <!doctype html>
