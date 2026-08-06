@@ -144,6 +144,15 @@ chatClose?.addEventListener("click", closeChatWidget);
 document.querySelectorAll(".wide-form, .tour-form form, .booking-modal-form, .hero-booking-form").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (typeof window.gtag_report_conversion === "function") {
+      window.gtag_report_conversion();
+    } else if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-18360440209/D334CKu4jtkcEJGr-LJE",
+        value: 1.0,
+        currency: "INR"
+      });
+    }
     const url = buildWhatsAppUrl(form);
     window.open(url, "_blank", "noopener");
     closeBookingModal();

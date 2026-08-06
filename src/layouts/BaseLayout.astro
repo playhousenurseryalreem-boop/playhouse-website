@@ -44,6 +44,35 @@ const googleTagManagerId = import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID ?? "GTM-
         </script>
       )
     }
+    <!-- Google tag (gtag.js) for Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18360440209"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-18360440209");
+
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url !== "undefined" && url) {
+            window.location = url;
+          }
+        };
+        if (typeof gtag === "function") {
+          gtag("event", "conversion", {
+            send_to: "AW-18360440209/D334CKu4jtkcEJGr-LJE",
+            value: 1.0,
+            currency: "INR",
+            event_callback: callback
+          });
+        } else {
+          callback();
+        }
+        return false;
+      }
+    </script>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
