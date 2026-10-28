@@ -1,5 +1,6 @@
 import { blogTopics, keywordPages, localAreas } from "../data/seoContent.generated.js";
 import { keywordRouteSlug, localRouteSlug, siteUrl } from "../data/seoHelpers.js";
+import { policies } from "../data/policies.js";
 
 const staticPages = [
   "",
@@ -12,6 +13,8 @@ const staticPages = [
   "environment",
   "location",
   "parent-info",
+  "policies",
+  ...policies.map((p) => `policies/${p.slug}`),
   "services",
   "team",
   "young-innovators-camp-uae",

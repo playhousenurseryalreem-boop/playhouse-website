@@ -34,6 +34,7 @@ const translations = {
     "4 - 5 years": "4 - 5 سنوات",
     "Send on WhatsApp": "إرسال عبر واتساب",
     "September registration is open now for 2026-27. Register now for early bird discount.": "التسجيل لشهر سبتمبر مفتوح الآن للعام 2026-27. سجل الآن للحصول على خصم الحجز المبكر.",
+    "January registration is open now for 2026-27. Register now for early bird discount.": "التسجيل لشهر يناير مفتوح الآن للعام 2026-27. سجل الآن للحصول على خصم الحجز المبكر.",
     "Chat with Playhouse": "تحدث مع بلاي هاوس",
     "Choose your nearest branch": "اختر أقرب فرع",
     "Chat on WhatsApp": "تواصل عبر واتساب",
